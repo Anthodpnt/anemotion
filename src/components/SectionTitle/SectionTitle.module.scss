@@ -1,0 +1,18 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.section {
+  @include section-center;
+  text-align: center;
+}
+
+// Content
+
+.title {
+  @include font-heading-80;
+}
+
+.subtitle {
+  margin-top: 1rem;
+}

@@ -1,0 +1,8 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.container {
+  width: calc(100% - #{$page-padding-x * 2});
+  margin: 0 auto;
+}

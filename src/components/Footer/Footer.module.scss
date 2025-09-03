@@ -1,0 +1,22 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-between;
+  padding-left: $page-padding-x;
+  padding-right: $page-padding-x;
+  padding-bottom: $page-padding-y;
+}
+
+// Content
+
+.text {
+  @include font-text-14;
+}

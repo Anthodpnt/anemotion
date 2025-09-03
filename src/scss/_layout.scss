@@ -1,0 +1,22 @@
+@mixin section {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin section-center {
+  @include section;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin section-center-x {
+  @include section;
+  align-items: center;
+}
+
+@mixin section-center-y {
+  @include section;
+  justify-content: center;
+}
