@@ -1,4 +1,4 @@
-@forward './values';
-@forward './layout';
 @forward './colors' as color-*;
+@forward './layout';
 @forward './typography' as font-*;
+@forward './values';
