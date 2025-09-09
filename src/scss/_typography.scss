@@ -19,6 +19,10 @@
   @include font($family: $font-bebas, $size: 8rem, $weight: $font-weight-bold, $transform: uppercase);
 }
 
+@mixin heading-64 {
+  @include font($family: $font-bebas, $size: 6.4rem, $weight: $font-weight-bold, $transform: uppercase);
+}
+
 // Texts
 
 @mixin text-14 {

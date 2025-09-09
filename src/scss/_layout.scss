@@ -1,6 +1,27 @@
-@mixin section {
-  width: 100%;
-  height: 100dvh;
+@use './values' as *;
+
+// Grid
+
+@mixin grid($row-gap: $grid-gap-y, $column-gap: $grid-gap-x) {
+  display: grid;
+  gap: $row-gap $column-gap;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@mixin grid-column-span($span: 12) {
+  grid-column: span $span;
+}
+
+@mixin grid-column-start($start: 1) {
+  grid-column-start: $start;
+}
+
+// Sections
+
+@mixin section($width: 100%, $height: 100dvh) {
+  width: $width;
+  height: $height;
   display: flex;
   flex-direction: column;
 }
