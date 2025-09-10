@@ -3,6 +3,7 @@
 // Layout
 
 .container {
-  width: calc(100% - #{$page-padding-x * 2});
+  width: 100%;
   margin: 0 auto;
+  max-width: calc(100% - #{$page-padding-x * 2});
 }

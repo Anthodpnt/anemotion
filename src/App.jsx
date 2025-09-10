@@ -17,6 +17,7 @@ const App = () => {
 
       <SectionTitle title="Anemotion" subtitle="Emotions with Animations" />
       <SectionIntro />
+      <SectionTitle />
 
       <Footer />
     </>

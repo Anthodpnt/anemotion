@@ -23,6 +23,18 @@
   @include font($family: $font-bebas, $size: 6.4rem, $weight: $font-weight-bold, $transform: uppercase);
 }
 
+@mixin heading-48 {
+  @include font($family: $font-bebas, $size: 4.8rem, $weight: $font-weight-bold, $transform: uppercase);
+}
+
+@mixin heading-32 {
+  @include font($family: $font-bebas, $size: 3.2rem, $weight: $font-weight-bold, $transform: uppercase);
+}
+
+@mixin heading-24 {
+  @include font($family: $font-bebas, $size: 2.4rem, $weight: $font-weight-bold, $transform: uppercase);
+}
+
 // Texts
 
 @mixin text-14 {

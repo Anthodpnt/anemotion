@@ -4,32 +4,34 @@ import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
 import Container from '@/components/Container'
+import Image from '@/components/Image'
 
 import s from './SectionIntro.module.scss'
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger)
 
+// Section Configuration
+const config = {
+  yearMin: 2010,
+  yearMax: 2025,
+}
+
+config.yearOnRoller = config.yearMax - config.yearMin + 1
+config.yearOnTimeline = config.yearMax - config.yearMin
+
 const SectionIntro = () => {
-  const digits = useRef([])
+  const years = useRef([])
+  const roller = useRef()
+  const digits = useRef()
   const section = useRef()
+  const progress = useRef()
 
   // Motion - Year transition on scroll.
   const { width } = useWindowSize()
 
   useGSAP(
     () => {
-      // Initialize the position of digits.
-      const yearDigits = '2023'.split('')
-
-      yearDigits.forEach((digit, i) => {
-        const targetY = -parseInt(digit) * 6.4 + 'rem'
-
-        gsap.set(digits.current[i], {
-          y: targetY,
-        })
-      })
-
       // Scroll motion to move digits based on the scroll progress.
       ScrollTrigger.create({
         trigger: section.current,
@@ -37,18 +39,58 @@ const SectionIntro = () => {
         end: 'bottom bottom',
         scrub: true,
         onUpdate: (self) => {
-          const year = 2023 - Math.round(self.progress * 10)
-          const yearDigits = year.toString().split('')
+          const size = (3 * window.innerHeight) / config.yearOnRoller
 
-          yearDigits.forEach((digit, i) => {
-            const targetY = -parseInt(digit) * 6.4 + 'rem'
+          // Calculate the scroll for precise sync between progress and years roll.
+          const scrollPos = self.scroll() - self.start
+          const maxScroll = config.yearOnRoller * size - window.innerHeight
 
-            gsap.to(digits.current[i], {
-              y: targetY,
-              ease: 'power2.out',
+          // Calculate a scroll progress from 0 to the last year.
+          const scrollProgress = Math.min(Math.max(scrollPos / maxScroll, 0), 1) * config.yearOnTimeline
+
+          // Motion of the years on scroll.
+          // Years roll on scroll.
+          const height = self.progress * 100
+          const translation = -(scrollProgress * 4.8)
+
+          gsap.to(digits.current, {
+            y: `${translation}rem`,
+            ease: 'none',
+            duration: 0,
+          })
+
+          // Motion of the progress bar & roller position.
+          // Both follow the scroll.
+          gsap.to(progress.current, {
+            height: `${height}%`,
+            ease: 'none',
+            duration: 0,
+          })
+
+          // Active state of the years on the timeline.
+          // Calculate an active index based on the scroll progress.
+          years.current.forEach((year, i) => year.classList.toggle(s.active, i <= Math.floor(scrollProgress)))
+
+          // Animation fade/scale pour chaque chiffre dans le roller
+          const digitElements = digits.current.children
+          const activeIndex = Math.round(scrollProgress)
+          const maxDistance = 2
+
+          for (let i = 0; i < digitElements.length; i++) {
+            const distance = Math.abs(i - activeIndex)
+            let ratio = 0
+
+            if (distance <= maxDistance) {
+              ratio = 1 - distance / maxDistance
+            }
+
+            gsap.to(digitElements[i], {
+              scale: 0.6 + 0.4 * ratio,
+              opacity: ratio,
+              ease: 'power.out',
               duration: 0.6,
             })
-          })
+          }
         },
       })
     },
@@ -59,39 +101,54 @@ const SectionIntro = () => {
     <section ref={section} className={s.section}>
       <Container className={s.container}>
         <div className={s.timeline}>
-          <span className={s.date}>2025</span>
-          <span className={s.date}>2024</span>
-          <span className={s.date}>2023</span>
-          <span className={s.date}>2022</span>
-          <span className={s.date}>2021</span>
-          <span className={s.date}>2020</span>
-          <span className={s.date}>2019</span>
-          <span className={s.date}>2018</span>
-          <span className={s.date}>2017</span>
-          <span className={s.date}>2016</span>
-          <span className={s.date}>2015</span>
-          <span className={s.date}>2014</span>
-          <span className={s.date}>2013</span>
-          <span className={s.date}>2012</span>
-          <span className={s.date}>2011</span>
+          {Array.from({ length: config.yearOnTimeline }).map((_, i) => (
+            <div ref={(el) => (years.current[i] = el)} key={`year-${config.yearMax - i}`} className={s.date}>
+              <span className={s.label}>{config.yearMax - i}</span>
+              <span className={s.circle} />
+            </div>
+          ))}
+
+          <div className={s.bar}>
+            <div ref={progress} className={s.progress} />
+          </div>
+        </div>
+
+        <div ref={roller} className={s.roller}>
+          <span className={s.inner}>
+            <span className={s.year}>
+              <span ref={digits} className={s.digits}>
+                {Array.from({ length: config.yearOnRoller }).map((_, i) => (
+                  <span key={`roller-year-${config.yearMax - i}`}>{config.yearMax - i}</span>
+                ))}
+              </span>
+            </span>
+          </span>
         </div>
 
         <div className={s.content}>
-          <h2 className={s.title}>
-            <span className={s.year}>
-              {Array.from('2023').map((_, i) => (
-                <span key={`digits-${i}`} className={s.digits}>
-                  <span ref={(el) => (digits.current[i] = el)} className={s.digitsColumn}>
-                    {Array.from({ length: 10 }).map((_, n) => (
-                      <span key={`digits-${i}__${n}`} className={s.digitsNumber}>
-                        {n}
-                      </span>
-                    ))}
-                  </span>
-                </span>
-              ))}
-            </span>
-          </h2>
+          <div className={s.image} data-scroll data-scroll-speed="0.1">
+            <Image src="//placehold.co/400x600" width={400} height={600} />
+          </div>
+
+          <div className={s.image} data-scroll data-scroll-speed="0.2">
+            <Image src="//placehold.co/400x600" width={400} height={600} />
+          </div>
+
+          <div className={s.image} data-scroll data-scroll-speed="0.3">
+            <Image src="//placehold.co/400x600" width={400} height={600} />
+          </div>
+
+          <div className={s.image} data-scroll data-scroll-speed="0.3">
+            <Image src="//placehold.co/400x600" width={400} height={600} />
+          </div>
+
+          <div className={s.image} data-scroll data-scroll-speed="0.2">
+            <Image src="//placehold.co/400x600" width={400} height={600} />
+          </div>
+
+          <div className={s.image} data-scroll data-scroll-speed="0.1">
+            <Image src="//placehold.co/400x600" width={400} height={600} />
+          </div>
         </div>
       </Container>
     </section>
