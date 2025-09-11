@@ -7,12 +7,16 @@
   text-align: center;
 }
 
+.container {
+  height: auto;
+}
+
 // Content
 
 .title {
-  @include font-heading-80;
+  @include font-heading-120;
 }
 
 .subtitle {
-  margin-top: 1rem;
+  color: $color-grey-4;
 }

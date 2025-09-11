@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('Inter-Regular.woff2') format('woff2'), url('Inter-Regular.woff') format('woff');
+  src: url('/fonts/Inter-Regular.woff2') format('woff2'), url('/fonts/Inter-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('Inter-Medium.woff2') format('woff2'), url('Inter-Medium.woff') format('woff');
+  src: url('/fonts/Inter-Medium.woff2') format('woff2'), url('/fonts/Inter-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'Bebas Neue';
-  src: url('BebasNeue-Regular.woff2') format('woff2'), url('BebasNeue-Regular.woff') format('woff');
+  src: url('/fonts/BebasNeue-Regular.woff2') format('woff2'), url('/fonts/BebasNeue-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('SourceCodePro-Medium.woff2') format('woff2'), url('SourceCodePro-Medium.woff') format('woff');
+  src: url('/fonts/SourceCodePro-Medium.woff2') format('woff2'), url('/fonts/SourceCodePro-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -40,7 +40,8 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('SourceCodePro-Regular.woff2') format('woff2'), url('SourceCodePro-Regular.woff') format('woff');
+  src: url('/fonts/SourceCodePro-Regular.woff2') format('woff2'),
+    url('/fonts/SourceCodePro-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -48,7 +49,7 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('SourceCodePro-Bold.woff2') format('woff2'), url('SourceCodePro-Bold.woff') format('woff');
+  src: url('/fonts/SourceCodePro-Bold.woff2') format('woff2'), url('/fonts/SourceCodePro-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

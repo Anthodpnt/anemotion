@@ -1,6 +1,6 @@
 @use './values' as *;
 
-@mixin font($family: $font-inter, $size: 1.6rem, $weight: 400, $line-height: 1, $letter-spacing: 0, $transform: none) {
+@mixin font($family: $font-inter, $size: 1.8rem, $weight: 400, $line-height: 1, $letter-spacing: 0, $transform: none) {
   font-family: $family;
   font-size: $size;
   font-weight: $weight;
@@ -15,28 +15,32 @@
 
 // Headings
 
+@mixin heading-120 {
+  @include font($family: $font-bebas, $size: 12rem);
+}
+
 @mixin heading-80 {
-  @include font($family: $font-bebas, $size: 8rem, $weight: $font-weight-bold, $transform: uppercase);
+  @include font($family: $font-bebas, $size: 8rem);
 }
 
 @mixin heading-64 {
-  @include font($family: $font-bebas, $size: 6.4rem, $weight: $font-weight-bold, $transform: uppercase);
+  @include font($family: $font-bebas, $size: 6.4rem);
 }
 
 @mixin heading-48 {
-  @include font($family: $font-bebas, $size: 4.8rem, $weight: $font-weight-bold, $transform: uppercase);
+  @include font($family: $font-bebas, $size: 4.8rem);
 }
 
 @mixin heading-32 {
-  @include font($family: $font-bebas, $size: 3.2rem, $weight: $font-weight-bold, $transform: uppercase);
+  @include font($family: $font-bebas, $size: 3.2rem);
 }
 
 @mixin heading-24 {
-  @include font($family: $font-bebas, $size: 2.4rem, $weight: $font-weight-bold, $transform: uppercase);
+  @include font($family: $font-bebas, $size: 2.4rem);
 }
 
 // Texts
 
 @mixin text-14 {
-  @include font($family: $font-mono, $size: 1.4rem);
+  @include font($size: 1.4rem);
 }

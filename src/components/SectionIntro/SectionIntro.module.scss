@@ -6,11 +6,6 @@
   @include section($height: 300dvh);
 }
 
-.container {
-  position: relative;
-  height: 100%;
-}
-
 .content {
   position: absolute;
   top: 0;
@@ -150,23 +145,16 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    // padding-left: 2.4rem;
-    // padding-right: 2.4rem;
-    // box-shadow: 0 0.4rem 1.2rem rgba($color-grey-8, 0.1);
-    // border: 1px solid $color-grey-0;
-    // border-radius: 8px;
-    // background-color: $color-white;
   }
 
   .year {
     height: 4.8rem;
-    // overflow: hidden;
   }
 
   .digits {
     display: flex;
     flex-direction: column;
-    @include font-heading-32;
+    @include font-heading-48;
 
     span {
       display: inline-flex;
