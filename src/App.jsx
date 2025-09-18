@@ -57,8 +57,29 @@ const App = () => {
     // Recalculate ScrollTrigger positions.
     ScrollTrigger.refresh()
 
+    // Keyboard navigation support.
+    const onKeyDown = (e) => {
+      switch (e.key) {
+        case 'PageUp':
+        case 'ArrowUp': {
+          e.preventDefault()
+          break
+        }
+
+        case 'PageDown':
+        case 'ArrowDown': {
+          e.preventDefault()
+          break
+        }
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+
     // Cleanup on unmount.
     return () => {
+      window.removeEventListener('keydown', onKeyDown)
+
       if (locomotive) {
         locomotive.destroy()
       }

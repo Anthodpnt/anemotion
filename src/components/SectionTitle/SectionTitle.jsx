@@ -35,12 +35,12 @@ const SectionTitle = ({ images, title, subtitle }) => {
           filter: 'blur(0px)',
           opacity: 1,
           stagger: {
-            each: 0.03,
+            each: 0.05,
             from: 'center',
           },
           scrollTrigger: {
             trigger: root.current,
-            start: 'top center',
+            start: 'top bottom',
             end: 'top top',
             scrub: true,
           },
