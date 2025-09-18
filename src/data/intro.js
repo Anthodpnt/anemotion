@@ -1,4 +1,6 @@
 export default {
-  title: 'Anemotion',
-  subtitle: 'Emotions with Animations',
+  header: {
+    title: 'Anemotion',
+    subtitle: 'Emotions with Animations',
+  },
 }

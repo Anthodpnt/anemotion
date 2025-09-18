@@ -4,30 +4,50 @@
 
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 1rem;
+  left: $page-padding-x;
+  right: $page-padding-x;
   z-index: 10;
-  height: 50px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: $page-padding-x;
-  padding-right: $page-padding-x;
-  // border-radius: 6px;
-  background-color: rgba($color-white, 0.7);
-  // box-shadow: 0 0 2.4rem rgba($color-grey-4, 0.15);
-  backdrop-filter: blur(10px);
 }
 
 // Content
 
-.text {
-  font-size: 13px;
-  font-family: 'Source Code Pro', monospace;
+.logo,
+.button {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
-  display: block;
-  height: 14px;
+  img {
+    display: block;
+    height: 16px;
+  }
+}
+
+.icon {
+  gap: 4px;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .line {
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: $color-white;
+    box-shadow: 0 1px rgba($color-grey-8, 0.2);
+  }
+}
+
+.button {
+  width: 48px;
+  height: 48px;
 }

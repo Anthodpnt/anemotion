@@ -10,6 +10,7 @@ import s from './SectionDefinition.module.scss'
 const SectionDefinition = ({ definitions = [] }) => {
   const defs = useRef([])
   const section = useRef()
+  const background = useRef()
 
   // Track the ready state of the component.
   const [isReady, setIsReady] = useState(false)
@@ -22,6 +23,72 @@ const SectionDefinition = ({ definitions = [] }) => {
       if (!isReady) {
         return
       }
+
+      // Motion of the section background on scroll.
+      // Phase `in` - Expand the background to full width.
+      gsap.to(background.current, {
+        left: 0,
+        right: 0,
+        borderTopLeftRadius: '0rem',
+        borderTopRightRadius: '0rem',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section.current,
+          start: 'top bottom',
+          end: 'top center',
+          scrub: true,
+        },
+      })
+
+      gsap.to(defs.current, {
+        x: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section.current,
+          start: 'top bottom',
+          end: 'top center',
+          scrub: true,
+        },
+      })
+
+      // Phase `out` - Contract the background back to padding.
+      gsap.fromTo(
+        background.current,
+        {
+          left: 0,
+          right: 0,
+          borderBottomLeftRadius: '0rem',
+          borderBottomRightRadius: '0rem',
+        },
+        {
+          left: '3rem',
+          right: '3rem',
+          borderBottomLeftRadius: '8rem',
+          borderBottomRightRadius: '8rem',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section.current,
+            start: 'bottom center',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      )
+
+      gsap.fromTo(
+        defs.current,
+        { x: 0 },
+        {
+          x: '3rem',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section.current,
+            start: 'bottom center',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      )
 
       // Motion of the definitions on scroll.
       // Fade in/out based on scroll position.
@@ -54,6 +121,10 @@ const SectionDefinition = ({ definitions = [] }) => {
     document.fonts.ready.then(() => {
       setIsReady(true)
     })
+
+    return () => {
+      setIsReady(false)
+    }
   }, [])
 
   return (
@@ -63,11 +134,13 @@ const SectionDefinition = ({ definitions = [] }) => {
           <div key={`definition-${i}`} className={s.definition}>
             <blockquote ref={(el) => (defs.current[i] = el)}>
               <p className={s.text}>"{definition.text}"</p>
-              <cite className={s.author}>{definition.author}</cite>
+              {definition.caption && <cite className={s.caption}>{definition.caption}</cite>}
             </blockquote>
           </div>
         ))}
       </Container>
+
+      <div ref={background} className={s.background} />
     </section>
   )
 }

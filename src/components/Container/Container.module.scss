@@ -8,4 +8,8 @@
   height: 100%;
   margin: 0 auto;
   max-width: calc(100% - #{$page-padding-x * 2});
+
+  @media only screen and (min-width: 1800px) {
+    max-width: calc(1800px - #{$page-padding-x * 2});
+  }
 }

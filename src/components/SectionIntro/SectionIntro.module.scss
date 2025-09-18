@@ -174,11 +174,19 @@
   &:nth-child(odd) {
     @include grid-column-span(3);
     @include grid-column-start(3);
+
+    [class*='caption_'] {
+      text-align: left;
+    }
   }
 
   &:nth-child(even) {
     @include grid-column-span(3);
     @include grid-column-start(8);
+
+    [class*='caption_'] {
+      text-align: right;
+    }
   }
 
   &:nth-child(1) {

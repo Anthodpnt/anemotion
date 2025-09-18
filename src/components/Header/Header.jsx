@@ -1,26 +1,21 @@
-import { useRef } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
-
-import { useTimer } from '@/hooks/useTimer'
-import { useClock } from '@/hooks/useClock'
+import Button from '@/components/Button'
 
 import s from './Header.module.scss'
 
 const Header = () => {
-  const header = useRef()
-
-  const timer = useTimer()
-  const clock = useClock()
-
-  // Motion - Header morph on scroll.
-  useGSAP(() => {}, { scope: header })
-
   return (
-    <header ref={header} className={s.header}>
-      <p className={s.text}>{clock}</p>
-      <img src="/images/logo-evs.png" alt="Logo of EVS" className={s.logo} />
-      <p className={s.text}>{timer}</p>
+    <header className={s.header}>
+      <div className={s.logo}>
+        <img src="/images/logo-evs.png" alt="Logo of EVS" />
+      </div>
+
+      <Button type="button" className={s.button}>
+        <span className={s.icon}>
+          <span className={s.line} />
+          <span className={s.line} />
+          <span className={s.line} />
+        </span>
+      </Button>
     </header>
   )
 }

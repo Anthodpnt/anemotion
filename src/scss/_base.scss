@@ -25,12 +25,13 @@ body {
 html {
   font-size: 10px;
 
-  @media only screen and (min-width: 1728px) {
-    font-size: calc(10 * (100vw / 1728));
+  @media only screen and (min-width: 1800px) {
+    font-size: calc(10 * (100vw / 1800));
   }
 }
 
 body {
+  color: $color-grey-8;
   margin: 0;
   @include font-body;
 }

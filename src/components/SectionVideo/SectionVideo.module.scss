@@ -1,0 +1,29 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.section {
+  @include section;
+}
+
+.container {
+  align-items: center;
+  @include grid;
+}
+
+.content {
+  @include grid-column-span(8);
+  @include grid-column-start(3);
+}
+
+// Content
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  @include font-heading-64;
+}
+
+.video {
+  width: 100%;
+}
