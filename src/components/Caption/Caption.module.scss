@@ -10,10 +10,10 @@
   line-height: 1;
   letter-spacing: 0.025em;
   text-shadow: 0 2px rgba($color-grey-8, 0.2);
-  box-shadow: 0 0 20px rgba($color-grey-8, 0.2);
+  box-shadow: 0 0 24px rgba($color-grey-8, 0.1), 0 2px 4px rgba($color-grey-8, 0.2);
   backdrop-filter: blur(10px);
   background-color: rgba($color-grey-3, 0.5);
-  border-radius: 999px;
+  border-radius: 99px;
 
   &::after,
   &::before {
@@ -33,5 +33,9 @@
 
   &::before {
     box-shadow: inset var(--offset) 1px calc(1px + var(--fade)) rgba($color-grey-0, 0.8);
+    background-image: url('/images/noise-white.png');
+    background-position: 50% 50%;
+    background-repeat: repeat;
+    background-size: 150px auto;
   }
 }
