@@ -17,7 +17,6 @@ const Button = ({ children, className, ...props }) => {
     const bounds = button.current.getBoundingClientRect()
 
     if (bounds.top >= window.innerHeight || bounds.bottom <= 0) {
-      gsap.set(button.current, { clearProps: 'all' })
       return
     }
 

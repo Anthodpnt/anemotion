@@ -9,10 +9,10 @@
   font-size: 13px;
   line-height: 1;
   letter-spacing: 0.025em;
-  text-shadow: 0 2px rgba($color-grey-8, 0.2);
-  box-shadow: 0 0 24px rgba($color-grey-8, 0.1), 0 2px 4px rgba($color-grey-8, 0.2);
+  text-shadow: 0 2px rgba($color-dark-2, 0.5);
+  box-shadow: 0 0 24px rgba($color-dark-4, 0.1), 0 2px 4px rgba($color-dark-4, 0.2);
   backdrop-filter: blur(10px);
-  background-color: rgba($color-grey-3, 0.5);
+  background-color: rgba($color-dark-1, 0.5);
   border-radius: 99px;
 
   &::after,
@@ -28,14 +28,10 @@
   }
 
   &::after {
-    box-shadow: inset calc(var(--offset) * -1) -5px calc(5px + var(--fade)) rgba($color-grey-8, 0.1);
+    box-shadow: inset calc(var(--offset, 0) * -1) -5px calc(5px + var(--fade, 0)) rgba($color-dark-4, 0.1);
   }
 
   &::before {
-    box-shadow: inset var(--offset) 1px calc(1px + var(--fade)) rgba($color-grey-0, 0.8);
-    background-image: url('/images/noise-white.png');
-    background-position: 50% 50%;
-    background-repeat: repeat;
-    background-size: 150px auto;
+    box-shadow: inset var(--offset, 0) 1px calc(1px + var(--fade, 0)) rgba($color-white, 0.5);
   }
 }

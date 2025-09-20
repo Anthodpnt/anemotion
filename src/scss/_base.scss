@@ -31,7 +31,8 @@ html {
 }
 
 body {
-  color: $color-grey-8;
+  color: $color-white;
   margin: 0;
+  background-color: $color-dark-3;
   @include font-body;
 }

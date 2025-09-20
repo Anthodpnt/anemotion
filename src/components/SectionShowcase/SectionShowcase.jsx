@@ -8,25 +8,25 @@ import Image from '@/components/Image'
 
 import s from './SectionShowcase.module.scss'
 
-const Project = forwardRef(({ accent }, ref) => {
+const Project = forwardRef((_, ref) => {
   return (
-    <article ref={ref} style={{ '--accent': accent }} className={s.project}>
+    <article ref={ref} className={s.project}>
       <Container className={s.container}>
         <div className={s.content}>
           <div className={s.image} data-scroll data-scroll-speed="0.1">
-            <Image src="//picsum.photos/600/400.webp?blur=10" width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.1">
-            <Image src="//picsum.photos/600/400.webp?blur=10" width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.1">
-            <Image src="//picsum.photos/600/400.webp?blur=10" width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.3">
-            <Image src="//picsum.photos/600/400.webp?blur=10" width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
         </div>
       </Container>
@@ -169,7 +169,9 @@ const SectionShowcase = ({ projects }) => {
           <h2 className={s.title}>
             <span ref={title} className={s.list}>
               {projects.map((project, i) => (
-                <span key={`title-${i}`}>{project.title}</span>
+                <span key={`title-${i}`} style={{ '--accent': project.accent }}>
+                  {project.title}
+                </span>
               ))}
             </span>
           </h2>

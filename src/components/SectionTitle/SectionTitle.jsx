@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import { gsap, SplitText } from 'gsap/all'
+import { useRef } from 'react'
+import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
@@ -11,33 +11,18 @@ const SectionTitle = ({ images, title, subtitle }) => {
   const root = useRef()
   const head = useRef()
 
-  // Track the ready state of the component.
-  const [isReady, setIsReady] = useState(false)
-
   // Motion - Letters animations on scroll.
   const { width } = useWindowSize()
 
   useGSAP(
     () => {
-      if (!isReady) {
-        return
-      }
-
-      const split = new SplitText(head.current, { type: 'chars' })
-
       gsap.fromTo(
-        split.chars,
+        head.current,
         {
-          filter: 'blur(5px)',
-          opacity: 0,
+          scaleY: 10,
         },
         {
-          filter: 'blur(0px)',
-          opacity: 1,
-          stagger: {
-            each: 0.05,
-            from: 'center',
-          },
+          scaleY: 1,
           scrollTrigger: {
             trigger: root.current,
             start: 'top bottom',
@@ -47,20 +32,8 @@ const SectionTitle = ({ images, title, subtitle }) => {
         }
       )
     },
-    { scope: root.current, dependencies: [width, isReady] }
+    { scope: root.current, dependencies: [width] }
   )
-
-  // Track font loading.
-  // Component is ready when fonts are loaded.
-  useEffect(() => {
-    document.fonts.ready.then(() => {
-      setIsReady(true)
-    })
-
-    return () => {
-      setIsReady(false)
-    }
-  }, [])
 
   return (
     <section ref={root} className={s.section}>

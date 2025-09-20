@@ -10,6 +10,7 @@ import SectionBalance from './components/SectionBalance'
 import SectionCompare from './components/SectionCompare'
 import SectionCompareVideo from './components/SectionCompareVideo'
 import SectionDefinition from './components/SectionDefinition'
+import SectionExample from './components/SectionExample'
 import SectionIntro from './components/SectionIntro'
 import SectionNumbers from './components/SectionNumbers'
 import SectionShowcase from './components/SectionShowcase'
@@ -124,7 +125,7 @@ const App = () => {
       <SectionTitle {...data.simple} />
       <SectionTitle {...data.complex} />
 
-      <SectionTitle title="Live Example" />
+      <SectionExample {...data.example} />
 
       <SectionTitle {...data.balance.header} />
       <SectionBalance contents={data.balance.contents} />

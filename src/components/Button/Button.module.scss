@@ -9,13 +9,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 24px rgba($color-grey-8, 0.1), 0 2px 4px rgba($color-grey-8, 0.2);
+  box-shadow: 0 0 24px rgba($color-dark-4, 0.5), 0 2px 4px rgba($color-dark-4, 0.5);
   backdrop-filter: blur(10px);
-  background-color: rgba($color-grey-3, 0.5);
+  background-color: rgba($color-dark-1, 0.5);
   z-index: 0;
 
   &:is(button) {
     cursor: pointer;
+  }
+
+  svg {
+    filter: drop-shadow(0 1px rgba($color-dark-2, 0.5));
   }
 
   &::after,
@@ -32,14 +36,10 @@
   }
 
   &::after {
-    box-shadow: inset 0 -5px 5px rgba($color-grey-8, 0.1);
+    box-shadow: inset 0 -5px 5px rgba($color-dark-4, 0.1);
   }
 
   &::before {
-    box-shadow: inset 0 1px 1px rgba($color-grey-0, 0.8);
-    background-image: url('/images/noise-white.png');
-    background-position: 50% 50%;
-    background-repeat: repeat;
-    background-size: 150px auto;
+    box-shadow: inset 0 1px 1px rgba($color-white, 0.4);
   }
 }

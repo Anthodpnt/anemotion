@@ -128,27 +128,27 @@ const SectionIntro = () => {
 
         <div className={s.content}>
           <div className={s.image} data-scroll data-scroll-speed="0.1">
-            <Image src="//picsum.photos/400/400.webp?blur=10" width={400} height={600} caption="Placeholder" />
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.2">
-            <Image src="//picsum.photos/400/400.webp?blur=10" width={400} height={600} caption="Placeholder" />
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.3">
-            <Image src="//picsum.photos/400/400.webp?blur=10" width={400} height={600} caption="Placeholder" />
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.3">
-            <Image src="//picsum.photos/400/400.webp?blur=10" width={400} height={600} caption="Placeholder" />
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.1">
-            <Image src="//picsum.photos/400/400.webp?blur=10" width={400} height={600} caption="Placeholder" />
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
           <div className={s.image} data-scroll data-scroll-speed="0.2">
-            <Image src="//picsum.photos/400/400.webp?blur=10" width={400} height={600} caption="Placeholder" />
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
         </div>
       </Container>

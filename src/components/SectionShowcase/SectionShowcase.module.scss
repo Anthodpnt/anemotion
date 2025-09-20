@@ -15,7 +15,7 @@
   bottom: 0;
   z-index: -1;
   border-radius: 8rem;
-  background-color: $color-grey-0;
+  background-color: $color-dark-2;
   pointer-events: none;
 }
 
@@ -67,7 +67,6 @@
 // Content
 
 .title {
-  color: var(--accent);
   height: 12rem;
   overflow: hidden;
   @include font-heading-120;
@@ -79,6 +78,7 @@
 
     span {
       height: 12rem;
+      color: var(--accent);
       display: inline-flex;
       align-items: center;
       justify-content: center;

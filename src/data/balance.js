@@ -9,12 +9,12 @@ export default {
       text: 'The motion informs the users by highlighting the relationships between elements and actions.',
       images: [
         {
-          src: '//picsum.photos/400/400.webp?blur=10',
+          src: '//picsum.photos/400/400.webp',
           width: 400,
           height: 400,
         },
         {
-          src: '//picsum.photos/400/400.webp?blur=10',
+          src: '//picsum.photos/400/400.webp',
           width: 400,
           height: 400,
         },
@@ -25,7 +25,7 @@ export default {
       text: 'The motion focuses the attention on what is important, without creating unecessary distractions.',
       images: [
         {
-          src: '//picsum.photos/400/400.webp?blur=10',
+          src: '//picsum.photos/400/400.webp',
           width: 400,
           height: 400,
         },
@@ -36,12 +36,12 @@ export default {
       text: 'The motion celebrates moments in the user journeys and adds character to common interactions.',
       images: [
         {
-          src: '//picsum.photos/400/400.webp?blur=10',
+          src: '//picsum.photos/400/400.webp',
           width: 400,
           height: 400,
         },
         {
-          src: '//picsum.photos/400/400.webp?blur=10',
+          src: '//picsum.photos/400/400.webp',
           width: 400,
           height: 400,
         },

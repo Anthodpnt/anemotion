@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import cn from 'clsx'
 
@@ -16,7 +15,6 @@ const Caption = ({ children, className }) => {
     const bounds = caption.current.getBoundingClientRect()
 
     if (bounds.top >= window.innerHeight || bounds.bottom <= 0) {
-      gsap.set(caption.current, { clearProps: 'all' })
       return
     }
 

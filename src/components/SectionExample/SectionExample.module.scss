@@ -1,0 +1,285 @@
+@use 'sass:color';
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.section {
+  @include section($height: 200dvh);
+}
+
+.container {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header,
+.content {
+  width: 100%;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+}
+
+.content {
+  @include grid;
+}
+
+.slider {
+  width: 100%;
+  height: 70dvh;
+  margin: 0 auto;
+  position: relative;
+  transform-origin: 50% 100%;
+  @include grid-column-span(6);
+  @include grid-column-start(4);
+
+  &::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mask-image: radial-gradient(ellipse at 50% 50%, #000 0%, transparent 70%);
+    background-image: repeating-linear-gradient(
+        to right,
+        rgba($color-dark-1, 0.3) 0px,
+        rgba($color-dark-1, 0.3) 1px,
+        transparent 1px,
+        transparent 30px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        rgba($color-dark-1, 0.3) 0px,
+        rgba($color-dark-1, 0.3) 1px,
+        transparent 1px,
+        transparent 30px
+      );
+  }
+}
+
+// Content
+
+.title {
+  text-align: center;
+  @include font-heading-64;
+}
+
+.subtitle {
+  color: $color-dark-1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 1.2rem;
+}
+
+.model {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+// Models
+
+.basic,
+.better,
+.best {
+  pointer-events: auto;
+}
+
+.basic {
+  height: 48px;
+  padding: 0 30px;
+  font-size: 18px;
+}
+
+.better {
+  height: 48px;
+  padding: 0 30px;
+  cursor: pointer;
+  border: 0 none;
+  outline: none;
+  border-radius: 12px;
+  background-color: #623bf3;
+  color: $color-white;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  appearance: none;
+
+  &:hover {
+    background-color: #7a57f6;
+  }
+
+  &:active {
+    background-color: #5635db;
+  }
+}
+
+.best {
+  position: relative;
+  z-index: 0;
+  gap: 1rem;
+  height: 48px;
+  padding: 0 30px;
+  cursor: pointer;
+  border: 0 none;
+  border-radius: 12px;
+  background: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 0 #623bf3;
+  transition: transform 0.3s $ease-out-expo;
+
+  &::after,
+  &::before {
+    inset: 0;
+    z-index: 1;
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+  }
+
+  &::before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: #623bf3;
+  }
+
+  &::after {
+    z-index: 2;
+    opacity: 0.5;
+    background-image: url('/images/noise-white.png');
+    background-position: 50% 50%;
+    background-repeat: repeat;
+    background-size: 150px auto;
+  }
+
+  .label {
+    z-index: 3;
+    height: 24px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    transition: opacity 0.3s $ease-out-expo;
+
+    svg {
+      fill: $color-white;
+      filter: drop-shadow(0 2px 0 #623bf3);
+    }
+
+    span {
+      gap: 10px;
+      width: 100%;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+
+  .effect {
+    inset: 0;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .glow {
+    z-index: -4;
+    opacity: 0.5;
+    box-shadow: 0 10px 50px #623bf3;
+    transition: opacity 0.6s $ease-out-sine;
+  }
+
+  .light {
+    z-index: 2;
+    opacity: 0.6;
+    background-image: radial-gradient(ellipse at 50% 120%, #c4b5fd 0%, transparent 100%);
+    transition: opacity 0.6s $ease-out-sine;
+  }
+
+  .shadow {
+    z-index: -3;
+    box-shadow: 0 2px 10px #0e0f15;
+    transition: all 0.3s $ease-out-expo;
+  }
+
+  .outline {
+    inset: -1px;
+    z-index: -2;
+    border: 1px solid rgba(#c4b5fd, 0.5);
+    border-radius: inherit;
+    background-color: #623bf3;
+  }
+
+  .highlight {
+    inset: -1px;
+    z-index: 2;
+    opacity: 0.9;
+    border: 1px solid #e9d5ff;
+    box-shadow: inset 0 0 8px #e9d5ff;
+    mask-image: linear-gradient(var(--angle, 90), #000 0%, transparent 25%, transparent 75%, #000 100%);
+    transition: opacity 0.6s $ease-out-sine;
+  }
+
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+
+    .particle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      will-change: transform, opacity, scale;
+    }
+  }
+
+  &:hover {
+    .glow {
+      opacity: 1;
+    }
+
+    .light {
+      opacity: 0.8;
+    }
+  }
+}

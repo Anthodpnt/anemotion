@@ -89,13 +89,14 @@ const SectionCompareVideo = ({ srcA, srcB, coverA, coverB, captionA, captionB, t
           gsap.set(playerA.root, {
             scale: 1 - self.progress * 0.2,
             opacity: 1 - Math.pow(self.progress, 0.5),
-            xPercent: -80 * self.progress,
+            // xPercent: -80 * self.progress,
             pointerEvents: self.progress < 0.5 ? 'auto' : 'none',
           })
 
           gsap.set(playerB.root, {
-            xPercent: -120 * self.progress,
-            opacity: self.progress,
+            // scale: 1.2 - self.progress * 0.2,
+            // xPercent: -120 * self.progress,
+            opacity: Math.pow(self.progress, 0.5),
             pointerEvents: self.progress > 0.5 ? 'auto' : 'none',
           })
         },
