@@ -9,7 +9,7 @@ import s from './SectionTitle.module.scss'
 
 const SectionTitle = ({ images, title, subtitle }) => {
   const root = useRef()
-  const head = useRef()
+  const header = useRef()
 
   // Motion - Letters animations on scroll.
   const { width } = useWindowSize()
@@ -17,7 +17,7 @@ const SectionTitle = ({ images, title, subtitle }) => {
   useGSAP(
     () => {
       gsap.fromTo(
-        head.current,
+        header.current,
         {
           scaleY: 10,
         },
@@ -39,8 +39,8 @@ const SectionTitle = ({ images, title, subtitle }) => {
     <section ref={root} className={s.section}>
       <Container>
         <header className={s.header}>
-          <div className={s.inner}>
-            <h2 ref={head} className={s.title} dangerouslySetInnerHTML={{ __html: title }} />
+          <div ref={header} className={s.inner}>
+            <h2 className={s.title} dangerouslySetInnerHTML={{ __html: title }} />
             {subtitle && <p className={s.subtitle}>{subtitle}</p>}
           </div>
         </header>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Howl } from 'howler'
@@ -30,26 +30,86 @@ const COLORS = [
   '#ff4e00',
 ]
 
-const SectionExample = ({ title, subtitle }) => {
+const Model = forwardRef(({ name, level, description, children }, ref) => {
+  return (
+    <div ref={ref} className={s.model}>
+      <div className={s.inner}>
+        <figure className={s.image}>
+          <span className={s.corner} />
+          <span className={s.corner} />
+          {children}
+        </figure>
+
+        <header className={s.header}>
+          <p className={s.name}>{name}</p>
+          <p className={s.level}>
+            <sub>Lvl</sub> {level}
+          </p>
+
+          <svg width="20" height="20" viewBox="0 0 16 16" className={s.star}>
+            <path d="M8 0 A8 8 0 0 0 16 8 A8 8 0 0 0 8 16 A8 8 0 0 0 0 8 A8 8 0 0 0 8 0 Z" />
+          </svg>
+        </header>
+
+        <div className={s.content}>
+          <p className={s.text}>{description}</p>
+        </div>
+
+        <svg viewBox="0 0 370 570" className={s.border}>
+          <path
+            d="M8 0 A8 8 0 0 0 16 8 A8 8 0 0 0 8 16 A8 8 0 0 0 0 8 A8 8 0 0 0 8 0 Z"
+            className={s.star}
+            transform="translate(0,0)"
+          />
+
+          <path
+            d="M8 0 A8 8 0 0 0 16 8 A8 8 0 0 0 8 16 A8 8 0 0 0 0 8 A8 8 0 0 0 8 0 Z"
+            className={s.star}
+            transform="translate(354,0)" // 370 - 16
+          />
+
+          <path
+            d="M8 0 A8 8 0 0 0 16 8 A8 8 0 0 0 8 16 A8 8 0 0 0 0 8 A8 8 0 0 0 8 0 Z"
+            className={s.star}
+            transform="translate(354,554)" // 370 - 16, 570 - 16
+          />
+
+          <path
+            d="M8 0 A8 8 0 0 0 16 8 A8 8 0 0 0 8 16 A8 8 0 0 0 0 8 A8 8 0 0 0 8 0 Z"
+            className={s.star}
+            transform="translate(0,554)" // 570 - 16
+          />
+
+          <path
+            d="M30 0 H340 A30 30 0 0 0 370 30 V540 A30 30 0 0 0 340 570 H30 A30 30 0 0 0 0 540 V30 A30 30 0 0 0 30 0 Z M30 1 A29 29 0 0 1 1 30 V540 A29 29 0 0 1 30 569 H340 A29 29 0 0 1 369 540 V30 A29 29 0 0 1 340 1 H30 Z"
+            className={s.shape}
+          />
+        </svg>
+      </div>
+    </div>
+  )
+})
+
+const SectionExample = ({ models, title, subtitle }) => {
   const slider = useRef()
   const section = useRef()
   const running = useRef(false)
 
   // Motion - Arc Slider
-  const models = useRef([])
+  const items = useRef([])
 
   const { contextSafe } = useGSAP(
     () => {
-      const angle = 25
-      const length = models.current.length - 1
+      const angle = 20
+      const length = items.current.length - 1
 
-      // Organize the models in an arc formation.
-      gsap.set(models.current, {
+      // Organize the items in an arc formation.
+      gsap.set(items.current, {
         rotate: (i) => i * angle,
         opacity: (i) => (i === 0 ? 1 : 0),
       })
 
-      // Motion of the models on scroll.
+      // Motion of the items on scroll.
       const progress = { value: 0 }
 
       gsap.to(progress, {
@@ -67,7 +127,7 @@ const SectionExample = ({ title, subtitle }) => {
           scrub: true,
         },
         onUpdate: () => {
-          models.current.forEach((item, i) => {
+          items.current.forEach((item, i) => {
             const rotation = i * angle - progress.value * angle
             const opacity = 1 - Math.min(Math.abs(rotation) / angle, 1)
 
@@ -183,21 +243,21 @@ const SectionExample = ({ title, subtitle }) => {
           </div>
         </header>
 
-        <div className={s.content}>
-          <div ref={slider} className={s.slider}>
-            <div ref={(el) => (models.current[0] = el)} className={s.model}>
+        <div ref={slider} className={s.slider}>
+          <div className={s.roller}>
+            <Model ref={(el) => (items.current[0] = el)} {...models[0]}>
               <button type="button" className={s.basic}>
                 Release
               </button>
-            </div>
+            </Model>
 
-            <div ref={(el) => (models.current[1] = el)} className={s.model}>
+            <Model ref={(el) => (items.current[1] = el)} {...models[1]}>
               <button type="button" className={s.better}>
                 Release
               </button>
-            </div>
+            </Model>
 
-            <div ref={(el) => (models.current[2] = el)} className={s.model}>
+            <Model ref={(el) => (items.current[2] = el)} {...models[2]}>
               <button type="button" style={{ '--angle': `${angle}deg` }} onClick={handleRelease} className={s.best}>
                 <span ref={label} className={s.label}>
                   <span className="label">
@@ -216,7 +276,7 @@ const SectionExample = ({ title, subtitle }) => {
                 <span className={cn(s.effect, s.outline)} />
                 <span className={cn(s.effect, s.highlight)} />
               </button>
-            </div>
+            </Model>
           </div>
         </div>
       </Container>
