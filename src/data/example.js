@@ -10,13 +10,13 @@ export default {
     },
     {
       name: 'Releasium',
-      level: '2',
+      level: '10',
       description:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil minima doloremque magni dolore distinctio eveniet numquam!',
     },
     {
       name: 'Releasaurus',
-      level: '3',
+      level: '100',
       description:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil minima doloremque magni dolore distinctio eveniet numquam!',
     },

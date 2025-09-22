@@ -90,7 +90,7 @@ const Model = forwardRef(({ name, level, description, children }, ref) => {
   )
 })
 
-const SectionExample = ({ models, title, subtitle }) => {
+const SectionExample = ({ models }) => {
   const slider = useRef()
   const section = useRef()
   const running = useRef(false)
@@ -100,7 +100,7 @@ const SectionExample = ({ models, title, subtitle }) => {
 
   const { contextSafe } = useGSAP(
     () => {
-      const angle = 20
+      const angle = 25
       const length = items.current.length - 1
 
       // Organize the items in an arc formation.
@@ -236,13 +236,6 @@ const SectionExample = ({ models, title, subtitle }) => {
   return (
     <section ref={section} className={s.section}>
       <Container className={s.container}>
-        <header className={s.header}>
-          <div className={s.inner}>
-            <h2 className={s.title} dangerouslySetInnerHTML={{ __html: title }} />
-            {subtitle && <p className={s.subtitle}>{subtitle}</p>}
-          </div>
-        </header>
-
         <div ref={slider} className={s.slider}>
           <div className={s.roller}>
             <Model ref={(el) => (items.current[0] = el)} {...models[0]}>
