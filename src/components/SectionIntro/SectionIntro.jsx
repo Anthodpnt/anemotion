@@ -131,15 +131,7 @@ const SectionIntro = () => {
             <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
-          <div className={s.image} data-scroll data-scroll-speed="0.2">
-            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
-          </div>
-
-          <div className={s.image} data-scroll data-scroll-speed="0.3">
-            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
-          </div>
-
-          <div className={s.image} data-scroll data-scroll-speed="0.3">
+          <div className={s.image} data-scroll data-scroll-speed="0.1">
             <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
@@ -147,7 +139,15 @@ const SectionIntro = () => {
             <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
 
-          <div className={s.image} data-scroll data-scroll-speed="0.2">
+          <div className={s.image} data-scroll data-scroll-speed="0.1">
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
+          </div>
+
+          <div className={s.image} data-scroll data-scroll-speed="0.1">
+            <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
+          </div>
+
+          <div className={s.image} data-scroll data-scroll-speed="0.1">
             <Image src="//picsum.photos/400/400.webp" width={400} height={600} caption="Placeholder" />
           </div>
         </div>

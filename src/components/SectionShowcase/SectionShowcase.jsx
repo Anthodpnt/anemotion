@@ -25,7 +25,7 @@ const Project = forwardRef((_, ref) => {
             <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
 
-          <div className={s.image} data-scroll data-scroll-speed="0.3">
+          <div className={s.image} data-scroll data-scroll-speed="0.1">
             <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
         </div>

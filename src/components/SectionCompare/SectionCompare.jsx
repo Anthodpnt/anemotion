@@ -14,7 +14,7 @@ const SectionCompare = ({ title, left, right }) => {
             <div className={s.leftSide} data-scroll data-scroll-speed="0.1">
               <Image {...left} />
             </div>
-            <div className={s.rightSide} data-scroll data-scroll-speed="0.2">
+            <div className={s.rightSide} data-scroll data-scroll-speed="0.1">
               <Image {...right} />
             </div>
           </div>

@@ -4,42 +4,48 @@
 // Layout
 
 .section {
-  @include section($height: 200dvh);
+  @include section($height: 300dvh);
 }
 
 .container {
   position: sticky;
   top: 0;
   height: 100dvh;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.slider {
-  position: relative;
-  width: 400px;
-  height: 600px;
-  margin: 0 auto;
-  transform-origin: 50% 100%;
-
-  .roller {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
+  padding-left: $page-padding-x;
+  padding-right: $page-padding-x;
 
   &::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 150dvh;
+    width: 100%;
     z-index: -1;
     transform: translate(-50%, -50%);
     aspect-ratio: 1 / 1;
     background-image: radial-gradient(circle at 50% 50%, rgba($color-purple-3, 0.3) 0%, transparent 70%);
+  }
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  overflow: hidden;
+  transform-origin: 50% 100%;
+
+  .roller {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    margin: auto;
   }
 }
 
@@ -200,7 +206,6 @@
       box-sizing: content-box;
       margin-left: -13px;
       border-radius: 50%;
-      background-color: $color-dark-4;
       fill: $color-dark-4;
       stroke: rgba($color-purple-1, 0.6);
       stroke-width: 1px;
@@ -210,7 +215,9 @@
   .name,
   .level {
     text-shadow: 0 0 10px $color-dark-4;
-    @include font-heading-32;
+    font-family: $font-bebas;
+    font-size: 32px;
+    line-height: 1;
   }
 
   .level {
@@ -221,7 +228,7 @@
       margin-top: 3px;
       margin-right: 5px;
       color: $color-white;
-      font-size: 2rem;
+      font-size: 20px;
       vertical-align: middle;
     }
   }

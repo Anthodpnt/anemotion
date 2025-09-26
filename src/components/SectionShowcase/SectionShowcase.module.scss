@@ -113,24 +113,25 @@
   grid-row: 1 / span 1;
 
   &:nth-child(1) {
+    margin-top: 10dvh;
     @include grid-column-span(4);
     @include grid-column-start(1);
   }
 
   &:nth-child(2) {
-    margin-top: 50dvh;
+    margin-top: 60dvh;
     @include grid-column-span(4);
     @include grid-column-start(9);
   }
 
   &:nth-child(3) {
-    margin-top: 100dvh;
+    margin-top: 110dvh;
     @include grid-column-span(4);
     @include grid-column-start(2);
   }
 
   &:nth-child(4) {
-    margin-top: 150dvh;
+    margin-top: 160dvh;
     @include grid-column-span(4);
     @include grid-column-start(8);
   }

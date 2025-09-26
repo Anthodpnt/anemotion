@@ -101,7 +101,7 @@ const SectionDefinition = ({ definitions = [] }) => {
           {
             opacity: 1,
             ease: 'none',
-            stagger: 0.2,
+            stagger: 0.1,
             scrollTrigger: {
               trigger: def,
               start: 'top bottom',

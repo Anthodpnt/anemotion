@@ -3,6 +3,7 @@ import { gsap, ScrollTrigger } from 'gsap/all'
 import LocomotiveScroll from 'locomotive-scroll'
 
 import * as data from './data'
+import navigate from './utils/navigate'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -58,55 +59,15 @@ const App = () => {
     // Recalculate ScrollTrigger positions.
     ScrollTrigger.refresh()
 
-    // Apply the scroll animation with Locomotive.
-    const applyScroll = (position, entry) => {
-      locomotive.scrollTo(position, {
-        lock: true,
-        easing: gsap.parseEase(entry.ease),
-        duration: entry.duration,
-      })
-    }
-
     // Keyboard navigation support.
-    let current = -1
+    const navigator = navigate(locomotive)
 
-    const onKeyDown = (e) => {
-      switch (e.key) {
-        case 'PageUp':
-        case 'ArrowUp': {
-          if (current >= 0) {
-            const entry = data.navigation[current]
-            const position = entry.from * window.innerHeight
-
-            current -= 1
-
-            applyScroll(position, entry)
-          }
-          e.preventDefault()
-          break
-        }
-
-        case 'PageDown':
-        case 'ArrowDown': {
-          if (current < data.navigation.length - 1) {
-            current += 1
-
-            const entry = data.navigation[current]
-            const position = entry.to * window.innerHeight
-
-            applyScroll(position, entry)
-          }
-          e.preventDefault()
-          break
-        }
-      }
-    }
-
-    window.addEventListener('keydown', onKeyDown)
+    // Initialize the keyboard navigation.
+    navigator.init()
 
     // Cleanup on unmount.
     return () => {
-      window.removeEventListener('keydown', onKeyDown)
+      navigator.destroy()
 
       if (locomotive) {
         locomotive.destroy()
