@@ -25,7 +25,7 @@
 
 .content {
   gap: 4rem;
-  height: 50%;
+  height: 70%;
   display: flex;
   @include grid-column-span(10);
   @include grid-column-start(2);

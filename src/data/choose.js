@@ -1,7 +1,7 @@
 export default {
   header: {
     title: 'CSS <sub>vs</sub> JS',
-    subtitle: 'Choosing the right tool for the job',
+    subtitle: 'How do we do?',
   },
   content: {
     left: {
