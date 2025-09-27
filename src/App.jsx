@@ -5,6 +5,7 @@ import { useLocomotiveScroll } from '@hooks/useLocomotiveScroll'
 
 import Header from '@layout/Header'
 import Footer from '@layout/Footer'
+import Background from '@layout/Background'
 import SectionBalance from '@sections/SectionBalance'
 import SectionCompare from '@sections/SectionCompare'
 import SectionCompareVideo from '@sections/SectionCompareVideo'
@@ -39,27 +40,45 @@ const App = () => {
       <SectionIntro />
 
       <SectionTitle {...data.emotion.header} />
-      <SectionDefinition definitions={data.emotion.definitions} />
+      <div className={s.group}>
+        <SectionDefinition definitions={data.emotion.definitions} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.animation.header} />
-      <SectionDefinition definitions={data.animation.definitions} />
+      <div className={s.group}>
+        <SectionDefinition definitions={data.animation.definitions} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.anemotion.header} />
-      <SectionDefinition definitions={data.anemotion.definitions} />
+      <div className={s.group}>
+        <SectionDefinition definitions={data.anemotion.definitions} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.experiment.header} />
-      <SectionVideo {...data.experiment.video} />
-      <SectionDefinition definitions={data.experiment.definitions} />
-      <SectionNumbers {...data.experiment.statistics} />
+      <div className={s.group}>
+        <SectionVideo {...data.experiment.video} />
+        <SectionDefinition definitions={data.experiment.definitions} />
+        <SectionNumbers {...data.experiment.statistics} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.painting.header} />
-      <SectionCompare {...data.painting.subject} />
-      <SectionCompare {...data.painting.color} />
+      <div className={s.group}>
+        <SectionCompare {...data.painting.subject} />
+        <SectionCompare {...data.painting.color} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.movie.header} />
-      <SectionVideo {...data.movie.acting} />
-      <SectionCompareVideo {...data.movie.music} />
-      <SectionCompareVideo {...data.movie.sound} />
+      <div className={s.group}>
+        <SectionVideo {...data.movie.acting} />
+        <SectionCompareVideo {...data.movie.music} />
+        <SectionCompareVideo {...data.movie.sound} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.showcase.header} />
       <SectionShowcase projects={data.showcase.projects} />
@@ -70,10 +89,16 @@ const App = () => {
       <SectionExample {...data.example} />
 
       <SectionTitle {...data.balance.header} />
-      <SectionBalance contents={data.balance.contents} />
+      <div className={s.group}>
+        <SectionBalance contents={data.balance.contents} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.choose.header} />
-      <SectionChoose {...data.choose.content} />
+      <div className={s.group}>
+        <SectionChoose {...data.choose.content} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.thanks.header} />
 

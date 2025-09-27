@@ -2,6 +2,7 @@ export default {
   video: {
     src: '//storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     cover: '//picsum.photos/1280/720.webp',
+    title: 'Experiment Video',
     caption: '"Animating Anthropomorphism: Giving Minds To Geometric Shapes." by Frietz Heider & Marianne Simmel, 1944',
   },
   header: {
@@ -12,6 +13,7 @@ export default {
     {
       text: 'This is the story of a man who planned to meet a girl. Unfortunately, she comes to the rendez-vous with another man. After each of the man tells the other to leave, a fight starts and, hesitating, to get away from it, the girl flees into the room. [...]',
       caption: 'The common interpretation',
+      duration: 10,
     },
   ],
   statistics: {

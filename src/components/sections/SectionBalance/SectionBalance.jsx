@@ -3,15 +3,13 @@ import { gsap, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
-import Container from '@layout/Container'
+import Section from '@layout/Section'
 
 import s from './SectionBalance.module.scss'
 
 const SectionBalance = ({ contents }) => {
+  const root = useRef()
   const slides = useRef([])
-  const slider = useRef()
-  const section = useRef()
-  const background = useRef()
 
   // Gather all images of all contents.
   const images = useMemo(() => {
@@ -20,90 +18,55 @@ const SectionBalance = ({ contents }) => {
     }, [])
   }, [contents])
 
-  // Motion - Year transition on scroll.
+  // Motion - Images transition on scroll.
   const { width } = useWindowSize()
 
   useGSAP(
     () => {
-      // Motion of the section background on scroll.
-      // Phase `in` - Expand the background to full width.
-      gsap.to(background.current, {
-        left: 0,
-        right: 0,
-        borderTopLeftRadius: '0rem',
-        borderTopRightRadius: '0rem',
-        scrollTrigger: {
-          trigger: section.current,
-          start: 'top bottom',
-          end: 'top center',
-          scrub: true,
-        },
-      })
-
-      // Phase `out` - Contract the background back to padding.
-      gsap.fromTo(
-        background.current,
-        {
-          left: 0,
-          right: 0,
-          borderBottomLeftRadius: '0rem',
-          borderBottomRightRadius: '0rem',
-        },
-        {
-          left: '3rem',
-          right: '3rem',
-          borderBottomLeftRadius: '8rem',
-          borderBottomRightRadius: '8rem',
-          scrollTrigger: {
-            trigger: section.current,
-            start: 'bottom center',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      )
-
-      // Phase `scroll` - Scroll through the images.
       const segment = 1 / (slides.current.length - 1)
 
+      // Create the motion based on the scroll.
+      const motion = (scroll) => {
+        const index = Math.floor(scroll.progress / segment)
+        const progress = (scroll.progress - index * segment) / segment
+
+        slides.current.forEach((item, i) => {
+          if (i === index) {
+            gsap.set(item, {
+              opacity: 1 - progress,
+              yPercent: -100 * progress,
+            })
+          } else if (i === index + 1) {
+            gsap.set(item, {
+              scale: 0.8 + 0.2 * progress,
+              opacity: progress,
+              borderRadius: `${3 - progress * 2}rem`,
+            })
+          } else {
+            gsap.set(item, {
+              opacity: 0,
+            })
+          }
+        })
+      }
+
+      // Phase `scroll` - Scroll through the images.
       ScrollTrigger.create({
-        trigger: section.current,
+        trigger: root.current,
         start: 'top top',
         end: 'bottom bottom',
         scrub: true,
-        onUpdate: (self) => {
-          const index = Math.floor(self.progress / segment)
-          const progress = (self.progress - index * segment) / segment
-
-          slides.current.forEach((item, i) => {
-            if (i === index) {
-              gsap.set(item, {
-                opacity: 1 - progress,
-                yPercent: -100 * progress,
-              })
-            } else if (i === index + 1) {
-              gsap.set(item, {
-                scale: 0.8 + 0.2 * progress,
-                opacity: progress,
-                borderRadius: `${3 - progress * 2}rem`,
-              })
-            } else {
-              gsap.set(item, {
-                opacity: 0,
-              })
-            }
-          })
-        },
+        onUpdate: motion,
       })
     },
-    { scope: section, dependencies: [width] }
+    { scope: root, dependencies: [width] }
   )
 
   return (
-    <section ref={section} className={s.section}>
-      <Container className={s.container}>
+    <Section ref={root}>
+      <div className={s.grid}>
         <div className={s.leftSide}>
-          <div ref={slider} className={s.slider}>
+          <div className={s.slider}>
             {images.map((image, i) => (
               <div ref={(el) => (slides.current[i] = el)} key={`image-${i}`} className={s.image}>
                 <img {...image} />
@@ -122,10 +85,8 @@ const SectionBalance = ({ contents }) => {
             </div>
           ))}
         </div>
-      </Container>
-
-      <div ref={background} className={s.background} />
-    </section>
+      </div>
+    </Section>
   )
 }
 

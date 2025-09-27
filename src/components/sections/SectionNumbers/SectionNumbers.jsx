@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef } from 'react'
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 
 import Section from '@layout/Section'
 import Slide from '@layout/Slide'

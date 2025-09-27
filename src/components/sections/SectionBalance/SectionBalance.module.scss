@@ -2,24 +2,7 @@
 
 // Layout
 
-.section {
-  position: relative;
-  @include section($height: auto);
-}
-
-.background {
-  position: absolute;
-  top: 0;
-  left: $page-padding-x;
-  right: $page-padding-x;
-  bottom: 0;
-  z-index: -1;
-  border-radius: 8rem;
-  background-color: $color-dark-2;
-  pointer-events: none;
-}
-
-.container {
+.grid {
   height: auto;
   @include grid;
 }
@@ -86,7 +69,7 @@
 }
 
 .title {
-  @include font-heading-64;
+  @include font-heading-48;
 }
 
 .text {

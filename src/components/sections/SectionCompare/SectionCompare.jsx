@@ -11,10 +11,10 @@ const SectionCompare = ({ title, left, right }) => {
         {title && <h2 className={s.title}>{title}</h2>}
 
         <div className={s.compare}>
-          <div className={s.leftSide} data-scroll data-scroll-speed="0.1">
+          <div className={s.leftSide}>
             <Image {...left} />
           </div>
-          <div className={s.rightSide} data-scroll data-scroll-speed="0.1">
+          <div className={s.rightSide}>
             <Image {...right} />
           </div>
         </div>

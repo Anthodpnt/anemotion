@@ -17,7 +17,7 @@ export const useReadingMotion = (scope, targets) => {
       }
 
       targets.current.forEach((target) => {
-        const split = new SplitText(target, { type: 'lines,words' })
+        const split = new SplitText(target.el, { type: 'lines,words' })
 
         // Initial state of the motion.
         gsap.set(split.words, {
@@ -26,13 +26,21 @@ export const useReadingMotion = (scope, targets) => {
 
         // Phase `in` - Reveal the words.
         gsap.to(split.words, {
-          opacity: 1,
-          stagger: 0.2,
+          opacity: 0.2,
+          stagger: 0.1,
           scrollTrigger: {
-            trigger: target,
+            trigger: target.el,
             start: 'top bottom',
             end: 'top center',
             scrub: true,
+          },
+          onComplete: () => {
+            gsap.to(split.words, {
+              opacity: 1,
+              stagger: target.duration / split.words.length,
+              ease: 'power1.out',
+              duration: 0.3,
+            })
           },
         })
       })

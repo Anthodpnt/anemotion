@@ -57,7 +57,7 @@ export const useMaskMotion = (scope, target, content, enabled = true) => {
 
       // Phase `in` - Reveal the element.
       ScrollTrigger.create({
-        trigger: target.current,
+        trigger: scope.current,
         start: 'top bottom',
         end: 'top center',
         scrub: true,
@@ -66,7 +66,7 @@ export const useMaskMotion = (scope, target, content, enabled = true) => {
 
       // Phase `out` - Hide the element.
       ScrollTrigger.create({
-        trigger: target.current,
+        trigger: scope.current,
         start: 'bottom center',
         end: 'bottom top',
         scrub: true,

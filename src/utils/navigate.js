@@ -1,4 +1,4 @@
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 
 import navigation from '@data/navigation'
 
@@ -86,9 +86,11 @@ const navigate = (locomotive) => {
           return
         }
 
+        console.log('UP', running)
         if (current >= 0) {
           const entry = navigation[current]
           const position = entry.from * window.innerHeight
+          console.log('UP', position)
 
           current -= 1
           running = true

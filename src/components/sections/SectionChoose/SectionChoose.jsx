@@ -1,39 +1,25 @@
 import { useRef } from 'react'
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 import cn from 'clsx'
 
 import Check from '@icons/Check'
 import Cross from '@icons/Cross'
-import Container from '@layout/Container'
+import Section from '@layout/Section'
+import Slide from '@layout/Slide'
 
 import s from './SectionChoose.module.scss'
 
 const SectionChoose = ({ left, right }) => {
-  const section = useRef()
-  const background = useRef()
+  const root = useRef()
 
-  // Motion - Year transition on scroll.
+  // Motion - Content reveal.
   const { width } = useWindowSize()
 
   useGSAP(
     () => {
-      // Motion of the section background on scroll.
-      // Phase `in` - Expand the background to full width.
-      gsap.to(background.current, {
-        left: 0,
-        right: 0,
-        borderTopLeftRadius: '0rem',
-        borderTopRightRadius: '0rem',
-        scrollTrigger: {
-          trigger: section.current,
-          start: 'top bottom',
-          end: 'top center',
-          scrub: true,
-        },
-      })
-
+      // Phase `in` - Reveal the content.
       gsap.fromTo(
         '.box',
         {
@@ -52,29 +38,7 @@ const SectionChoose = ({ left, right }) => {
         }
       )
 
-      // Phase `out` - Contract the background back to padding.
-      gsap.fromTo(
-        background.current,
-        {
-          left: 0,
-          right: 0,
-          borderBottomLeftRadius: '0rem',
-          borderBottomRightRadius: '0rem',
-        },
-        {
-          left: '3rem',
-          right: '3rem',
-          borderBottomLeftRadius: '8rem',
-          borderBottomRightRadius: '8rem',
-          scrollTrigger: {
-            trigger: section.current,
-            start: 'bottom center',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      )
-
+      // Phase `out` - Hide the content.
       gsap.fromTo(
         '.box',
         {
@@ -93,12 +57,12 @@ const SectionChoose = ({ left, right }) => {
         }
       )
     },
-    { scope: section, dependencies: [width] }
+    { scope: root, dependencies: [width] }
   )
 
   return (
-    <section ref={section} className={s.section}>
-      <Container className={s.container}>
+    <Section ref={root}>
+      <Slide className={s.grid}>
         <div className={s.content}>
           <div className={cn('box', s.box)} data-scroll data-scroll-repeat data-scroll-position="middle,middle">
             <h3 className={s.title}>{left.title}</h3>
@@ -156,10 +120,8 @@ const SectionChoose = ({ left, right }) => {
             </div>
           </div>
         </div>
-      </Container>
-
-      <div ref={background} className={s.background} />
-    </section>
+      </Slide>
+    </Section>
   )
 }
 

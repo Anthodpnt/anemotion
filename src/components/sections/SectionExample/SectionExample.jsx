@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
-import { gsap, ScrollTrigger } from 'gsap/all'
+import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Howl } from 'howler'
 import cn from 'clsx'
@@ -127,6 +127,7 @@ const SectionExample = ({ models }) => {
 
       gsap.to(progress, {
         value: length,
+        ease: 'none',
         scrollTrigger: {
           trigger: root.current,
           start: 'top top',

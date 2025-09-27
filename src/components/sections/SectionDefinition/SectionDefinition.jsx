@@ -2,7 +2,6 @@ import { useRef } from 'react'
 
 import Section from '@layout/Section'
 import Slide from '@layout/Slide'
-import Background from '@layout/Background'
 import { useReadingMotion } from '@motion/useReadingMotion'
 
 import s from './SectionDefinition.module.scss'
@@ -10,7 +9,6 @@ import s from './SectionDefinition.module.scss'
 const SectionDefinition = ({ definitions = [] }) => {
   const root = useRef()
   const targets = useRef([])
-  const background = useRef()
 
   // Motion - Reading effect & Background.
   useReadingMotion(root, targets)
@@ -19,14 +17,12 @@ const SectionDefinition = ({ definitions = [] }) => {
     <Section ref={root}>
       {definitions.map((definition, i) => (
         <Slide key={`definition-${i}`} className={s.definition}>
-          <blockquote ref={(el) => (targets.current[i] = el)}>
+          <blockquote ref={(el) => (targets.current[i] = { el, duration: definition.duration ?? 3 })}>
             <p className={s.text}>"{definition.text}"</p>
             {definition.caption && <cite className={s.caption}>{definition.caption}</cite>}
           </blockquote>
         </Slide>
       ))}
-
-      <Background ref={background} />
     </Section>
   )
 }
