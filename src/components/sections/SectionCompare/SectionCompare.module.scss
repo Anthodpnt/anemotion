@@ -1,0 +1,36 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.compare {
+  width: 100%;
+  align-items: center;
+  @include grid;
+}
+
+.leftSide {
+  @include grid-column-span(5);
+  @include grid-column-start(2);
+
+  [class*='caption_'] {
+    text-align: left;
+  }
+}
+
+.rightSide {
+  @include grid-column-span(5);
+  @include grid-column-start(7);
+
+  [class*='caption_'] {
+    left: auto;
+    right: 16px;
+  }
+}
+
+// Content
+
+.title {
+  text-align: center;
+  margin-bottom: 5rem;
+  @include font-heading-64;
+}

@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 
-import navigation from '@/data/navigation'
+import navigation from '@data/navigation'
 
 /**
  * Triggers a scroll to the top of the page.
@@ -129,9 +129,7 @@ const navigate = (locomotive) => {
   }
 
   // Method to initialize the keyboard navigation
-  const init = () => {
-    window.addEventListener('keydown', onKeyDown)
-  }
+  window.addEventListener('keydown', onKeyDown)
 
   // Method to destroy the keyboard navigation
   const destroy = () => {
@@ -140,7 +138,7 @@ const navigate = (locomotive) => {
     window.removeEventListener('keydown', onKeyDown)
   }
 
-  return { init, destroy }
+  return { destroy }
 }
 
 export default navigate

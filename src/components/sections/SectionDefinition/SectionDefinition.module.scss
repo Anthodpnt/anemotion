@@ -1,0 +1,42 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.definition {
+  align-items: center;
+  @include grid;
+
+  blockquote {
+    @include grid-column-span(7);
+    @include grid-column-start(2);
+
+    @media only screen and (max-width: 1025px) {
+      @include grid-column-span(8);
+      @include grid-column-start(1);
+    }
+  }
+}
+
+// Content
+
+.text {
+  font-family: $font-inter;
+  font-size: 3.2rem;
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+
+  @media only screen and (max-width: 1025px) {
+    font-size: 2.8rem;
+  }
+
+  b {
+    font-weight: $font-weight-bold;
+  }
+}
+
+.caption {
+  color: $color-dark-1;
+  display: block;
+  margin-top: 2rem;
+}

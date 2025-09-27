@@ -1,23 +1,21 @@
-import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from 'gsap/all'
-import LocomotiveScroll from 'locomotive-scroll'
 
-import * as data from './data'
-import navigate from './utils/navigate'
+import * as data from '@data'
+import { useLocomotiveScroll } from '@hooks/useLocomotiveScroll'
 
-import Header from './components/Header'
-import Footer from './components/Footer'
-import SectionBalance from './components/SectionBalance'
-import SectionCompare from './components/SectionCompare'
-import SectionCompareVideo from './components/SectionCompareVideo'
-import SectionDefinition from './components/SectionDefinition'
-import SectionExample from './components/SectionExample'
-import SectionIntro from './components/SectionIntro'
-import SectionNumbers from './components/SectionNumbers'
-import SectionShowcase from './components/SectionShowcase'
-import SectionTitle from './components/SectionTitle'
-import SectionVideo from './components/SectionVideo'
-import SectionChoose from './components/SectionChoose/SectionChoose'
+import Header from '@layout/Header'
+import Footer from '@layout/Footer'
+import SectionBalance from '@sections/SectionBalance'
+import SectionCompare from '@sections/SectionCompare'
+import SectionCompareVideo from '@sections/SectionCompareVideo'
+import SectionDefinition from '@sections/SectionDefinition'
+import SectionExample from '@sections/SectionExample'
+import SectionIntro from '@sections/SectionIntro'
+import SectionNumbers from '@sections/SectionNumbers'
+import SectionShowcase from '@sections/SectionShowcase'
+import SectionTitle from '@sections/SectionTitle'
+import SectionVideo from '@sections/SectionVideo'
+import SectionChoose from '@sections/SectionChoose/SectionChoose'
 
 import s from './App.module.scss'
 
@@ -30,55 +28,11 @@ if ('scrollRestoration' in window.history) {
 gsap.registerPlugin(ScrollTrigger)
 
 const App = () => {
-  const scroller = useRef()
-
-  useEffect(() => {
-    // Create new Locomotive Scroll instance.
-    const locomotive = new LocomotiveScroll()
-
-    // Connect ScrollTrigger to Locomotive Scroll.
-    locomotive.lenisInstance.on('scroll', ScrollTrigger.update)
-
-    ScrollTrigger.scrollerProxy(scroller.current, {
-      scrollTop(value) {
-        return locomotive.scrollTo(value, { immediate: true })
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        }
-      },
-    })
-
-    // Force a scroll reset.
-    locomotive.scrollTo(0, { immediate: true })
-
-    // Recalculate ScrollTrigger positions.
-    ScrollTrigger.refresh()
-
-    // Keyboard navigation support.
-    const navigator = navigate(locomotive)
-
-    // Initialize the keyboard navigation.
-    navigator.init()
-
-    // Cleanup on unmount.
-    return () => {
-      navigator.destroy()
-
-      if (locomotive) {
-        locomotive.destroy()
-      }
-
-      ScrollTrigger.killAll()
-    }
-  }, [])
+  // Enable the navigation with Locomotive Scroll and keyboard.
+  useLocomotiveScroll()
 
   return (
-    <main ref={scroller} className={s.root} data-scroll-container>
+    <main className={s.root} data-scroll-container>
       <Header />
 
       <SectionTitle {...data.intro.header} />
