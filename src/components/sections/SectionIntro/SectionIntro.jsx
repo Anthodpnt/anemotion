@@ -74,6 +74,7 @@ const SectionIntro = () => {
 
           gsap.to(digitElements[i], {
             scale: 0.6 + 0.4 * ratio,
+            color: gsap.utils.interpolate('#6d6e88', '#fff', ratio),
             opacity: ratio,
             ease: 'power1.out',
             duration: 0.3,
@@ -98,8 +99,8 @@ const SectionIntro = () => {
     <Section ref={root} className={s.section}>
       <div className={s.timeline}>
         {Array.from({ length: config.yearOnTimeline }).map((_, i) => (
-          <div ref={(el) => (years.current[i] = el)} key={`year-${config.yearMax - i}`} className={s.date}>
-            <span className={s.label}>{config.yearMax - i}</span>
+          <div ref={(el) => (years.current[i] = el)} key={`year-${config.yearMin + i}`} className={s.date}>
+            <span className={s.label}>{config.yearMin + i}</span>
             <span className={s.circle} />
           </div>
         ))}
@@ -114,7 +115,7 @@ const SectionIntro = () => {
           <span className={s.year}>
             <span ref={digits} className={s.digits}>
               {Array.from({ length: config.yearOnRoller }).map((_, i) => (
-                <span key={`roller-year-${config.yearMax - i}`}>{config.yearMax - i}</span>
+                <span key={`roller-year-${config.yearMin + i}`}>{config.yearMin + i}</span>
               ))}
             </span>
           </span>

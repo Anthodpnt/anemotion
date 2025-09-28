@@ -1,0 +1,34 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.message {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $color-dark-4;
+  padding-left: $page-padding-x;
+  padding-right: $page-padding-x;
+  text-align: center;
+
+  svg {
+    fill: $color-white;
+    margin-bottom: 3rem;
+  }
+}
+
+// Content
+
+.title {
+  margin-bottom: 1.5rem;
+  @include font-heading-24;
+}
+
+.text {
+  color: $color-dark-1;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}

@@ -1,7 +1,7 @@
 export default {
   header: {
     title: 'Paintings',
-    subtitle: 'How other mediums create emotion?',
+    subtitle: 'How Other Mediums Create Emotion?',
   },
   color: {
     title: 'The Colors',

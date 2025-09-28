@@ -33,4 +33,11 @@
   text-align: center;
   margin-bottom: 5rem;
   @include font-heading-48;
+
+  sub {
+    display: inline-block;
+    font-size: 3rem;
+    margin-top: 0.5rem;
+    vertical-align: middle;
+  }
 }

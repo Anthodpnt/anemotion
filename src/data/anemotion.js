@@ -6,6 +6,7 @@ export default {
     {
       text: 'the technique of giving emotions through user experiences by animating elements in a meaningful way.',
       caption: 'Anthony',
+      duration: 2,
     },
   ],
 }

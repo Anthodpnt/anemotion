@@ -1,7 +1,7 @@
 export default {
   header: {
     title: 'CSS <sub>vs</sub> JS',
-    subtitle: 'How do we do?',
+    subtitle: 'Red Pill or Blue Pill',
   },
   content: {
     left: {

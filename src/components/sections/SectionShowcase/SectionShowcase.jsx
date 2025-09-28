@@ -3,32 +3,31 @@ import { gsap, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
-import Section from '@layout/Section'
 import Container from '@layout/Container'
 import Background from '@layout/Background'
 import Image from '@components/Image'
 
 import s from './SectionShowcase.module.scss'
 
-const Project = forwardRef(({ title }, ref) => {
+const Project = forwardRef((_, ref) => {
   return (
     <article ref={ref} className={s.project}>
       <Container className={s.container}>
         <div className={s.content} data-scroll data-scroll-speed="0.1">
           <div className={s.image}>
-            <Image src={`//placehold.co/600x400?text=${title}`} width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
 
           <div className={s.image}>
-            <Image src={`//placehold.co/600x400?text=${title}`} width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
 
           <div className={s.image}>
-            <Image src={`//placehold.co/600x400?text=${title}`} width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
 
           <div className={s.image}>
-            <Image src={`//placehold.co/600x400?text=${title}`} width={600} height={400} />
+            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
           </div>
         </div>
       </Container>
@@ -120,37 +119,39 @@ const SectionShowcase = ({ projects }) => {
   )
 
   return (
-    <Section ref={root} className={s.section}>
-      <header className={s.header}>
-        <Container className={s.inner}>
-          <p ref={suptitle} className={s.suptitle}>
-            {projects[0].suptitle}
-          </p>
+    <section ref={root} className={s.section}>
+      <Container>
+        <header className={s.header}>
+          <Container className={s.inner}>
+            <p ref={suptitle} className={s.suptitle}>
+              {projects[0].suptitle}
+            </p>
 
-          <h2 className={s.title}>
-            <span ref={title} className={s.list}>
-              {projects.map((project, i) => (
-                <span key={`title-${i}`} style={{ '--accent': project.accent }}>
-                  {project.title}
-                </span>
-              ))}
-            </span>
-          </h2>
+            <h2 className={s.title}>
+              <span ref={title} className={s.list}>
+                {projects.map((project, i) => (
+                  <span key={`title-${i}`} style={{ '--accent': project.accent }}>
+                    {project.title}
+                  </span>
+                ))}
+              </span>
+            </h2>
 
-          <p ref={subtitle} className={s.subtitle}>
-            {projects[0].subtitle}
-          </p>
-        </Container>
-      </header>
+            <p ref={subtitle} className={s.subtitle}>
+              {projects[0].subtitle}
+            </p>
+          </Container>
+        </header>
 
-      <div className={s.projects}>
-        {projects.map((_, i) => (
-          <Project ref={(el) => (sections.current[i] = el)} key={`project-${i}`} title={`project-${i + 1}`} />
-        ))}
-      </div>
+        <div className={s.projects}>
+          {projects.map((_, i) => (
+            <Project ref={(el) => (sections.current[i] = el)} key={`project-${i}`} />
+          ))}
+        </div>
+      </Container>
 
       <Background ref={background} />
-    </Section>
+    </section>
   )
 }
 

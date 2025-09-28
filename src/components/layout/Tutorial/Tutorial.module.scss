@@ -1,0 +1,186 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  place-content: center;
+  flex-direction: column;
+}
+
+.content {
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3rem 4rem 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 1rem;
+  background-color: $color-dark-2;
+
+  .inner {
+    gap: 3rem;
+    width: 100%;
+    display: flex;
+  }
+}
+
+.leftSide,
+.rightSide {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: rgba($color-dark-4, 0.9);
+}
+
+// Content
+
+.line {
+  width: 1px;
+  background-color: rgba($color-dark-1, 0.4);
+}
+
+.title {
+  margin-bottom: 2rem;
+  @include font-heading-24;
+}
+
+.text {
+  color: $color-dark-1;
+  font-size: 1.6rem;
+  line-height: 1.4;
+
+  b {
+    color: $color-white;
+  }
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.controls {
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mouse {
+  fill: $color-dark-1;
+}
+
+.keyboard {
+  gap: 4px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.key {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  border: 2px solid $color-dark-1;
+
+  &::before {
+    content: '';
+  }
+
+  &.up {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+
+    &::before {
+      margin-bottom: 1px;
+      border-bottom: 5px solid $color-dark-1;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+    }
+  }
+
+  &.right {
+    opacity: 0.3;
+    grid-row: 2 / span 1;
+    grid-column: 3 / span 1;
+
+    &::before {
+      border-left: 5px solid $color-dark-1;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+  }
+
+  &.down {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+
+    &::before {
+      margin-top: 1px;
+      border-top: 5px solid $color-dark-1;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+    }
+  }
+
+  &.left {
+    opacity: 0.3;
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+
+    &::before {
+      margin-right: 1px;
+      border-right: 5px solid $color-dark-1;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+  }
+}
+
+.button {
+  cursor: pointer;
+  height: 4.8rem;
+  padding: 1.2rem 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: 0 none;
+  border-radius: 12px;
+  background-color: $color-purple-4;
+  color: $color-white;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  appearance: none;
+
+  &:hover {
+    background-color: $color-purple-3;
+  }
+
+  &:active {
+    background-color: $color-purple-5;
+  }
+}

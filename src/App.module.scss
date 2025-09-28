@@ -1,4 +1,35 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
 .root,
 .group {
   position: relative;
+}
+
+// Content
+
+.tutorial {
+  z-index: 20;
+  position: fixed;
+  right: $page-padding-x;
+  bottom: 2rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  appearance: none;
+
+  svg {
+    fill: $color-white;
+  }
+}
+
+:global(.icon-mouse) {
+  position: absolute;
+  fill: $color-dark-1;
+  left: 50%;
+  bottom: 4.5rem;
+  transform: translateX(-50%);
+  margin-left: -1px;
 }

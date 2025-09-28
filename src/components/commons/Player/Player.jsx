@@ -19,26 +19,6 @@ const Player = forwardRef(({ src, cover, caption, playing, onClick, useMotion = 
   // Motion - Mask reveal.
   useMaskMotion(root, video, content, useMotion)
 
-  const handleVideoReset = () => {
-    // Reset the playback position.
-    controls.current.pause()
-    controls.current.currentTime = 0
-
-    // Show the video cover.
-    video.current.classList.remove('is-paused')
-    video.current.classList.remove('is-playing')
-  }
-
-  const handleVideoPlay = () => {
-    video.current.classList.add('is-playing')
-    video.current.classList.remove('is-paused')
-  }
-
-  const handleVideoPause = () => {
-    video.current.classList.add('is-paused')
-    video.current.classList.remove('is-playing')
-  }
-
   const handleVideoPlayback = () => {
     // Toggle the playback of the video
     controls.current.paused ? controls.current.play() : controls.current.pause()
@@ -50,6 +30,26 @@ const Player = forwardRef(({ src, cover, caption, playing, onClick, useMotion = 
   // Add relevant events to the video element.
   useEffect(() => {
     const el = controls.current
+
+    const handleVideoPlay = () => {
+      video.current.classList.add('is-playing')
+      video.current.classList.remove('is-paused')
+    }
+
+    const handleVideoPause = () => {
+      video.current.classList.add('is-paused')
+      video.current.classList.remove('is-playing')
+    }
+
+    const handleVideoReset = () => {
+      // Reset the playback position.
+      controls.current.pause()
+      controls.current.currentTime = 0
+
+      // Show the video cover.
+      video.current.classList.remove('is-paused')
+      video.current.classList.remove('is-playing')
+    }
 
     window.addEventListener(id, handleVideoReset)
 

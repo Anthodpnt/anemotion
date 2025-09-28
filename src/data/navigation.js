@@ -333,9 +333,5 @@ export default [
   // Thank You / End
   {
     name: 'CSS vs JS Comparison - Thank You',
-    from: 47,
-    to: 48,
-    ease: 'power2.inOut',
-    duration: 1.5,
   },
 ]

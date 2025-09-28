@@ -22,7 +22,7 @@ export const navigateToHome = (locomotive, options = {}) => {
  */
 export const navigateToEnd = (locomotive, options = {}) => {
   if (locomotive) {
-    const entry = navigation[navigation.length - 1]
+    const entry = navigation[navigation.length - 2]
     const position = entry.to * window.innerHeight
     locomotive.scrollTo(position, { lock: true, easing: gsap.parseEase('power2.inOut'), duration: 5, ...options })
   }
@@ -71,7 +71,7 @@ const navigate = (locomotive) => {
           return
         }
 
-        current = navigation.length - 1
+        current = navigation.length - 2
         running = true
 
         navigateToEnd(locomotive, { onComplete: () => (running = false) })
@@ -86,11 +86,9 @@ const navigate = (locomotive) => {
           return
         }
 
-        console.log('UP', running)
         if (current >= 0) {
           const entry = navigation[current]
           const position = entry.from * window.innerHeight
-          console.log('UP', position)
 
           current -= 1
           running = true
@@ -112,7 +110,7 @@ const navigate = (locomotive) => {
           return
         }
 
-        if (current < navigation.length - 1) {
+        if (current < navigation.length - 2) {
           current += 1
           running = true
 

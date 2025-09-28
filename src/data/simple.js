@@ -1,6 +1,6 @@
 export default {
   title: 'Simple Animations',
-  subtitle: 'Improve the user experience',
+  subtitle: 'Improve the User Experience',
   images: [
     {
       src: '//picsum.photos/400/400.webp',

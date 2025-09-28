@@ -1,7 +1,7 @@
 export default {
   header: {
     title: 'Movies & Series',
-    subtitle: 'How other mediums create emotion?',
+    subtitle: 'How Other Mediums Create Emotion?',
   },
   acting: {
     title: 'The Acting',

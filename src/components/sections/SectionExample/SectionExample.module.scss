@@ -18,9 +18,18 @@
     left: 50%;
     width: 100%;
     z-index: -1;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
     aspect-ratio: 1 / 1;
-    background-image: radial-gradient(circle at 50% 50%, rgba($color-purple-3, 0.3) 0%, transparent 70%);
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba($color-purple-3, 0.3) 0%,
+      rgba($color-purple-3, 0.225) 17.5%,
+      rgba($color-purple-3, 0.15) 35%,
+      rgba($color-purple-3, 0.075) 52.5%,
+      rgba($color-purple-3, 0) 70%,
+      rgba($color-purple-3, 0) 100%
+    );
+    backface-visibility: hidden;
   }
 }
 
@@ -34,13 +43,18 @@
 
   .roller {
     position: relative;
-    width: 400px;
-    height: 600px;
+    width: 40rem;
+    height: 60rem;
     margin: auto;
   }
 }
 
 // Content
+
+.title {
+  margin-bottom: 5rem;
+  @include font-heading-48;
+}
 
 .model {
   position: absolute;
@@ -207,7 +221,7 @@
   .level {
     text-shadow: 0 0 10px $color-dark-4;
     font-family: $font-bebas;
-    font-size: 32px;
+    font-size: 3.2rem;
     line-height: 1;
   }
 
@@ -219,7 +233,7 @@
       margin-top: 3px;
       margin-right: 5px;
       color: $color-white;
-      font-size: 20px;
+      font-size: 2rem;
       vertical-align: middle;
     }
   }
@@ -234,8 +248,9 @@
 
   .text {
     color: rgba($color-purple-1, 0.6);
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 1.4;
+    padding-right: 3rem;
   }
 }
 
@@ -248,21 +263,21 @@
 }
 
 .basic {
-  height: 48px;
-  padding: 0 30px;
-  font-size: 18px;
+  height: 4.8rem;
+  padding: 0 3rem;
+  font-size: 1.8rem;
 }
 
 .better {
-  height: 48px;
-  padding: 0 30px;
+  height: 4.8rem;
+  padding: 0 3rem;
   cursor: pointer;
   border: 0 none;
   outline: none;
   border-radius: 12px;
   background-color: $color-purple-4;
   color: $color-white;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0;
@@ -281,8 +296,8 @@
   position: relative;
   z-index: 0;
   gap: 1rem;
-  height: 48px;
-  padding: 0 30px;
+  height: 4.8rem;
+  padding: 0 3rem;
   cursor: pointer;
   border: 0 none;
   border-radius: 12px;
@@ -292,7 +307,7 @@
   align-items: center;
   justify-content: center;
   color: $color-white;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.03em;
@@ -328,7 +343,7 @@
 
   .label {
     z-index: 3;
-    height: 24px;
+    height: 2.4rem;
     display: inline-flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -342,11 +357,12 @@
     }
 
     span {
-      gap: 10px;
+      gap: 1rem;
       width: 100%;
-      height: 24px;
+      height: 2.4rem;
       display: inline-flex;
       align-items: center;
+      line-height: 2.4rem;
     }
   }
 

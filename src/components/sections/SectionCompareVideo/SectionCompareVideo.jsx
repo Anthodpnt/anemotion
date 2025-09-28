@@ -86,7 +86,7 @@ const SectionCompareVideo = ({ srcA, srcB, coverA, coverB, captionA, captionB, t
         <div className={s.inner}>
           {title && <h2 className={s.title}>{title}</h2>}
 
-          <div ref={video} className={s.players} data-scroll data-scroll-call={id} data-scroll-repeat>
+          <div ref={video} className={s.players}>
             <div ref={content} className={s.content}>
               <div ref={slider} className={s.player}>
                 <Player

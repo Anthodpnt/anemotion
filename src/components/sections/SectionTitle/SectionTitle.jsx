@@ -14,8 +14,8 @@ const SectionTitle = ({ images, title, subtitle }) => {
   useStretchMotion(root, header)
 
   return (
-    <Section ref={root}>
-      <Slide>
+    <Section ref={root} className={s.section}>
+      <Slide className={s.container}>
         <header ref={header} className={s.header}>
           <h2 className={s.title} dangerouslySetInnerHTML={{ __html: title }} />
           {subtitle && <p className={s.subtitle}>{subtitle}</p>}

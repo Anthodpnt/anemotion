@@ -1,6 +1,6 @@
 export default {
-  title: 'Complex Animations',
-  subtitle: 'Create the Storytelling',
+  title: 'What About the Web?',
+  subtitle: 'Skeuomorphism vs Flat Design',
   images: [
     {
       src: '//picsum.photos/400/400.webp',

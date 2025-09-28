@@ -1,7 +1,7 @@
 export default {
   header: {
     title: 'Find the Balance',
-    subtitle: 'Understanding motion with Google',
+    subtitle: 'Understanding Motion with Google',
   },
   contents: [
     {

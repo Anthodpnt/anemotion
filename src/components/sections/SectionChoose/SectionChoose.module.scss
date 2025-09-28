@@ -10,6 +10,7 @@
 .content {
   gap: 4rem;
   height: 70%;
+  max-height: 600px;
   display: flex;
   @include grid-column-span(10);
   @include grid-column-start(2);

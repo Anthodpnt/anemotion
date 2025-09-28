@@ -1,10 +1,16 @@
+import { useState } from 'react'
 import { gsap, ScrollTrigger } from 'gsap/all'
+import { useMedia } from 'react-use'
 
 import * as data from '@data'
 import { useLocomotiveScroll } from '@hooks/useLocomotiveScroll'
 
+import Help from '@icons/Help'
+import Mouse from '@icons/Mouse'
 import Header from '@layout/Header'
 import Footer from '@layout/Footer'
+import Message from '@layout/Message'
+import Tutorial from '@layout/Tutorial'
 import Background from '@layout/Background'
 import SectionBalance from '@sections/SectionBalance'
 import SectionCompare from '@sections/SectionCompare'
@@ -29,14 +35,39 @@ if ('scrollRestoration' in window.history) {
 gsap.registerPlugin(ScrollTrigger)
 
 const App = () => {
+  const [showTutorial, setShowTutorial] = useState(true)
+
+  // Track media queries and show coming soon message.
+  const isSoon = useMedia('(max-width: 1279px)')
+
   // Enable the navigation with Locomotive Scroll and keyboard.
   useLocomotiveScroll()
+
+  // Toggle the tutorial modal.
+  const handleTutorialToggle = () => {
+    setShowTutorial((prev) => !prev)
+  }
+
+  if (isSoon) {
+    return (
+      <Message icon={<Help width={48} />} title="Coming soon" text="This website looks better on a wider screen." />
+    )
+  }
 
   return (
     <main className={s.root} data-scroll-container>
       <Header />
 
-      <SectionTitle {...data.intro.header} />
+      <div className={s.group}>
+        <SectionTitle {...data.intro.header} />
+        {showTutorial && <Tutorial onClose={handleTutorialToggle} />}
+
+        <button type="button" onClick={handleTutorialToggle} className={s.tutorial}>
+          <Help />
+        </button>
+
+        <Mouse width={32} />
+      </div>
       <SectionIntro />
 
       <SectionTitle {...data.emotion.header} />
@@ -80,7 +111,7 @@ const App = () => {
         <Background />
       </div>
 
-      <SectionTitle {...data.showcase.header} />
+      <SectionTitle {...data.evolution} />
       <SectionShowcase projects={data.showcase.projects} />
 
       <SectionTitle {...data.simple} />
