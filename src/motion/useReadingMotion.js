@@ -26,7 +26,7 @@ export const useReadingMotion = (scope, targets) => {
         if (target.voice) {
           voice = new Howl({
             src: [target.voice],
-            volume: 0.2,
+            volume: 0.5,
           })
         }
 

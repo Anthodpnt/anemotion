@@ -91,8 +91,8 @@ const App = () => {
       <SectionTitle {...data.experiment.header} />
       <div className={s.group}>
         <SectionVideo {...data.experiment.video} />
-        <SectionDefinition definitions={data.experiment.definitions} />
         <SectionNumbers {...data.experiment.statistics} />
+        <SectionDefinition definitions={data.experiment.definitions} />
         <Background />
       </div>
 

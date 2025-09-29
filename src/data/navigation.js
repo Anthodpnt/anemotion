@@ -4,7 +4,7 @@ export default [
     name: 'Intro - Timeline End',
     from: 0,
     to: 3,
-    ease: 'power2.inOut',
+    ease: 'power1.inOut',
     duration: 5,
   },
   {
