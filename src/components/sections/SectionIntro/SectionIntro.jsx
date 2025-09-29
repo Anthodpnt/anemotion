@@ -124,27 +124,33 @@ const SectionIntro = () => {
 
       <div className={s.images} data-scroll data-scroll-speed="0.1">
         <div className={s.image}>
-          <Image src="//picsum.photos/400/400.webp" width={400} height={600} />
+          <Image src="/images/intro/tomorrowland.webp" width={400} height={600} />
+          <img src="/images/intro/tomorrowland-logo.webp" width={400} height={600} className={s.logo} />
         </div>
 
         <div className={s.image}>
-          <Image src="//picsum.photos/400/400.webp" width={400} height={600} />
+          <Image src="/images/intro/hape.webp" width={400} height={600} />
+          <img src="/images/intro/hape-logo.webp" width={400} height={600} className={s.logo} />
         </div>
 
         <div className={s.image}>
-          <Image src="//picsum.photos/400/400.webp" width={400} height={600} />
+          <Image src="/images/intro/virgin-galactic.webp" width={400} height={600} />
+          <img src="/images/intro/virgin-galactic-logo.webp" width={400} height={600} className={s.logo} />
         </div>
 
         <div className={s.image}>
-          <Image src="//picsum.photos/400/400.webp" width={400} height={600} />
+          <Image src="/images/intro/adobe.webp" width={400} height={600} />
+          <img src="/images/intro/adobe-logo.webp" width={400} height={600} className={s.logo} />
         </div>
 
         <div className={s.image}>
-          <Image src="//picsum.photos/400/400.webp" width={400} height={600} />
+          <Image src="/images/intro/hugo-boss.webp" width={400} height={600} />
+          <img src="/images/intro/hugo-boss-logo.webp" width={400} height={600} className={s.logo} />
         </div>
 
         <div className={s.image}>
-          <Image src="//picsum.photos/400/400.webp" width={400} height={600} />
+          <Image src="/images/intro/virtual-expo.webp" width={400} height={600} />
+          <img src="/images/intro/virtual-expo-logo.webp" width={400} height={600} className={s.logo} />
         </div>
       </div>
     </Section>

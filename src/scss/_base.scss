@@ -24,7 +24,9 @@ body {
 }
 
 html {
+  color: $color-white;
   font-size: 10px;
+  font-family: $font-inter;
 
   @media only screen and (min-width: 1800px) {
     font-size: calc(10 * (100vw / 1800));
@@ -32,8 +34,6 @@ html {
 }
 
 body {
-  margin: 0;
-  color: $color-white;
   background-color: $color-dark-3;
   @include font-body;
 }

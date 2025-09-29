@@ -160,8 +160,9 @@
 
 .button {
   cursor: pointer;
+  width: 12rem;
   height: 4.8rem;
-  padding: 1.2rem 2.4rem;
+  padding: 0 2.4rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -170,7 +171,8 @@
   border-radius: 12px;
   background-color: $color-purple-4;
   color: $color-white;
-  font-size: 1rem;
+  font-family: $font-inter;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
