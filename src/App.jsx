@@ -117,7 +117,11 @@ const App = () => {
       <SectionTitle {...data.simple} />
       <SectionTitle {...data.complex} />
 
-      <SectionExample {...data.example} />
+      <SectionExample {...data.example.demo} />
+      <div className={s.group}>
+        <SectionVideo {...data.example.video} />
+        <Background />
+      </div>
 
       <SectionTitle {...data.balance.header} />
       <div className={s.group}>

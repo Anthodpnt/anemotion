@@ -9,7 +9,7 @@ import { useMaskMotion } from '@motion/useMaskMotion'
 
 import s from './Player.module.scss'
 
-const Player = forwardRef(({ src, cover, caption, playing, onClick, useMotion = true, className }, ref) => {
+const Player = forwardRef(({ src, alt, cover, caption, playing, onClick, useMotion = true, className }, ref) => {
   const id = useId()
   const root = useRef()
   const video = useRef()
@@ -94,10 +94,16 @@ const Player = forwardRef(({ src, cover, caption, playing, onClick, useMotion = 
               <Play width={36} />
               <Pause width={36} />
             </Button>
-            {cover && <img src={cover} alt="" />}
+            {cover && <img src={cover} alt={alt} />}
           </button>
 
-          <video ref={controls} src={src} playsInline />
+          <video ref={controls} playsInline>
+            {src.map((_src, index) => (
+              <source key={`video-source__${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
+            ))}
+            Your browser does not support the video tag.
+          </video>
+
           {caption && <Caption className={s.caption}>{caption}</Caption>}
         </div>
       </div>

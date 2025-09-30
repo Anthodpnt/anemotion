@@ -11,7 +11,7 @@ import { useMaskMotion } from '@motion/useMaskMotion'
 
 import s from './SectionCompareVideo.module.scss'
 
-const SectionCompareVideo = ({ srcA, srcB, coverA, coverB, captionA, captionB, title }) => {
+const SectionCompareVideo = ({ srcA, srcB, altA, altB, coverA, coverB, captionA, captionB, title }) => {
   const id = useId()
   const root = useRef()
   const video = useRef()
@@ -89,6 +89,7 @@ const SectionCompareVideo = ({ srcA, srcB, coverA, coverB, captionA, captionB, t
                   id={`${id}-A`}
                   ref={(el) => (players.current[0] = el)}
                   src={srcA}
+                  alt={altA}
                   cover={coverA}
                   caption={captionA}
                   onClick={handleVideoPlayback}
@@ -101,6 +102,7 @@ const SectionCompareVideo = ({ srcA, srcB, coverA, coverB, captionA, captionB, t
                   id={`${id}-B`}
                   ref={(el) => (players.current[1] = el)}
                   src={srcB}
+                  alt={altB}
                   cover={coverB}
                   caption={captionB}
                   onClick={handleVideoPlayback}

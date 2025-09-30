@@ -81,9 +81,9 @@
     opacity: 0.3;
     pointer-events: none;
     background-image: url('/images/noise-white.png');
-    background-position: 50% 50%;
-    background-repeat: repeat;
     background-size: 150px auto;
+    background-repeat: repeat;
+    background-position: 50% 50%;
   }
 
   .inner {
@@ -334,11 +334,11 @@
 
   &::after {
     z-index: 2;
-    opacity: 0.5;
+    opacity: 0.3;
     background-image: url('/images/noise-white.png');
-    background-position: 50% 50%;
-    background-repeat: repeat;
     background-size: 150px auto;
+    background-repeat: repeat;
+    background-position: 50% 50%;
   }
 
   .label {

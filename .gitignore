@@ -23,6 +23,3 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
-
-# Medias
-videos/

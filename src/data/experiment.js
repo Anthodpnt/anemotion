@@ -1,7 +1,6 @@
 export default {
   video: {
-    src: '//storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    cover: '//picsum.photos/1280/720.webp',
+    src: ['/videos/heider-simmel-experiment.webm', '/videos/heider-simmel-experiment.mp4'],
     title: 'The Experiment Video',
     caption: '"Animating Anthropomorphism: Giving Minds To Geometric Shapes." by Frietz Heider & Marianne Simmel, 1944',
   },

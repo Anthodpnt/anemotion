@@ -124,33 +124,99 @@ const SectionIntro = () => {
 
       <div className={s.images} data-scroll data-scroll-speed="0.1">
         <div className={s.image}>
-          <Image src="/images/intro/tomorrowland.webp" width={400} height={600} />
-          <img src="/images/intro/tomorrowland-logo.webp" width={400} height={600} className={s.logo} />
+          <Image
+            src="/images/intro/tomorrowland.webp"
+            alt="Blurry image with shades of green"
+            width={400}
+            height={600}
+          />
+          <img
+            src="/images/intro/tomorrowland-logo.webp"
+            alt="Logo with the Tomorrowland text"
+            width={400}
+            height={600}
+            className={s.logo}
+          />
         </div>
 
         <div className={s.image}>
-          <Image src="/images/intro/hape.webp" width={400} height={600} />
-          <img src="/images/intro/hape-logo.webp" width={400} height={600} className={s.logo} />
+          <Image
+            src="/images/intro/hape.webp"
+            alt="Blurry image with shades of red and black"
+            width={400}
+            height={600}
+          />
+          <img
+            src="/images/intro/hape-logo.webp"
+            alt="Logo with the HAPE Prime text"
+            width={400}
+            height={600}
+            className={s.logo}
+          />
         </div>
 
         <div className={s.image}>
-          <Image src="/images/intro/virgin-galactic.webp" width={400} height={600} />
-          <img src="/images/intro/virgin-galactic-logo.webp" width={400} height={600} className={s.logo} />
+          <Image
+            src="/images/intro/virgin-galactic.webp"
+            alt="Blurry image with shades of white and purple"
+            width={400}
+            height={600}
+          />
+          <img
+            src="/images/intro/virgin-galactic-logo.webp"
+            alt="Logo with the Virgin Galactic text"
+            width={400}
+            height={600}
+            className={s.logo}
+          />
         </div>
 
         <div className={s.image}>
-          <Image src="/images/intro/adobe.webp" width={400} height={600} />
-          <img src="/images/intro/adobe-logo.webp" width={400} height={600} className={s.logo} />
+          <Image
+            src="/images/intro/adobe.webp"
+            alt="Blurry image with shades of pink and beige"
+            width={400}
+            height={600}
+          />
+          <img
+            src="/images/intro/adobe-logo.webp"
+            alt="Logo with the Adobe text"
+            width={400}
+            height={600}
+            className={s.logo}
+          />
         </div>
 
         <div className={s.image}>
-          <Image src="/images/intro/hugo-boss.webp" width={400} height={600} />
-          <img src="/images/intro/hugo-boss-logo.webp" width={400} height={600} className={s.logo} />
+          <Image
+            src="/images/intro/hugo-boss.webp"
+            alt="Blurry image with shades of brown and beige"
+            width={400}
+            height={600}
+          />
+          <img
+            src="/images/intro/hugo-boss-logo.webp"
+            alt="Logo with the Hugo Boss text"
+            width={400}
+            height={600}
+            className={s.logo}
+          />
         </div>
 
         <div className={s.image}>
-          <Image src="/images/intro/virtual-expo.webp" width={400} height={600} />
-          <img src="/images/intro/virtual-expo-logo.webp" width={400} height={600} className={s.logo} />
+          <Image
+            src="/images/intro/virtual-expo.webp"
+            alt="Blurry image with shades of beige, pink and green"
+            width={400}
+            height={600}
+          />
+          <img
+            src="/images/intro/virtual-expo-logo.webp"
+            alt="Logo with the Expo 2020 Dubai UAE text"
+            width={400}
+            height={600}
+            className={s.logo}
+          />
         </div>
       </div>
     </Section>
