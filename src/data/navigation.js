@@ -5,7 +5,7 @@ export default [
     from: 0,
     to: 3,
     ease: 'power1.inOut',
-    duration: 5,
+    duration: 6,
   },
   {
     name: 'Timeline End - Emotion Title',

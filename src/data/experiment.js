@@ -12,7 +12,11 @@ export default {
   definitions: [
     {
       text: 'This is the story of a man who planned to meet a girl. Unfortunately, she comes to the rendez-vous with another man. After each of the man tells the other to leave, a fight starts and, hesitating, to get away from it, the girl flees into the room. [...]',
-      voice: '/voices/heider-simmel-experiment-interpretation.mp3',
+      voice: [
+        '/voices/heider-simmel-experiment-interpretation.ogg',
+        '/voices/heider-simmel-experiment-interpretation.mp3',
+      ],
+      volume: 1,
       caption: 'The common interpretation',
       duration: 16,
     },

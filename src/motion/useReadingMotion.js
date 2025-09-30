@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap, SplitText } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
@@ -9,7 +9,12 @@ import { Howl } from 'howler'
 // Note: It supports multiple targets as an array of refs.
 export const useReadingMotion = (scope, targets) => {
   const { width } = useWindowSize()
+
+  // Track the loading of the fonts.
   const [isReady, setIsReady] = useState(false)
+
+  // Track the playback of the sound.
+  const howls = useRef([])
 
   useGSAP(
     () => {
@@ -17,18 +22,9 @@ export const useReadingMotion = (scope, targets) => {
         return
       }
 
-      targets.current.forEach((target) => {
+      targets.current.forEach((target, i) => {
+        const howl = howls.current[i]
         const split = new SplitText(target.el, { type: 'lines,words' })
-
-        // Create the voice.
-        let voice
-
-        if (target.voice) {
-          voice = new Howl({
-            src: [target.voice],
-            volume: 0.5,
-          })
-        }
 
         // Initial state of the motion.
         gsap.set(split.words, {
@@ -42,13 +38,17 @@ export const useReadingMotion = (scope, targets) => {
             start: 'top bottom',
             end: 'bottom top',
             onLeave: () => {
-              if (voice) {
-                voice.stop()
+              if (howl) {
+                howl.stop()
+                howl.needsPlay = false
+                howl.needsResume = false
               }
             },
             onLeaveBack: () => {
-              if (voice) {
-                voice.stop()
+              if (howl) {
+                howl.stop()
+                howl.needsPlay = false
+                howl.needsResume = false
               }
             },
             toggleActions: 'play complete play complete',
@@ -61,13 +61,13 @@ export const useReadingMotion = (scope, targets) => {
           ease: 'power1.out',
           duration: 0.2,
           onComplete: () => {
-            if (voice) {
-              voice.play()
+            if (howl && howl.needsPlay) {
+              howl.play()
             }
           },
         }).to(split.words, {
           opacity: 1,
-          stagger: target.duration / split.words.length,
+          stagger: (target.duration ?? 3) / split.words.length,
           ease: 'power1.out',
           duration: 0.3,
         })
@@ -83,8 +83,43 @@ export const useReadingMotion = (scope, targets) => {
       setIsReady(true)
     })
 
-    return () => {
-      setIsReady(false)
+    // Initialize the Howl instances for each target with a voice.
+    // Create the voice.
+    targets.current.forEach((target, i) => {
+      if (target.voice) {
+        howls.current[i] = new Howl({
+          src: Array.isArray(target.voice) ? target.voice : [target.voice],
+          volume: target.volume || 0.5,
+        })
+
+        howls.current[i].on('play', () => {
+          howls.current[i].needsResume = true
+        })
+
+        howls.current[i].on('end', () => {
+          howls.current[i].needsPlay = false
+          howls.current[i].needsResume = false
+        })
+
+        howls.current[i].needsPlay = true
+        howls.current[i].needsResume = false
+      }
+    })
+
+    // Pause the sound when the window visibility changes.
+    // The sound is paused if it was playing and resumed when visibility is back.
+    const onVisibilityChange = () => {
+      howls.current.forEach((howl) => {
+        if (howl && howl.needsPlay && howl.needsResume) {
+          document.hidden ? howl.pause() : howl.play()
+        }
+      })
     }
-  }, [])
+
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+    }
+  }, [targets])
 }

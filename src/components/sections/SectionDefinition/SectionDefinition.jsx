@@ -22,7 +22,8 @@ const SectionDefinition = ({ definitions = [] }) => {
               (targets.current[i] = {
                 el,
                 voice: definition.voice,
-                duration: definition.duration ?? 3,
+                volume: definition.volume,
+                duration: definition.duration,
               })
             }
           >

@@ -40,19 +40,15 @@ const SectionCompareVideo = ({ srcA, srcB, coverA, coverB, captionA, captionB, t
         // Control the video playback.
         if (!playerA.controls.paused) {
           playerA.controls.pause()
-          playerA.controls.currentTime = 0
+          playerA.video.classList.add('is-paused')
+          playerA.video.classList.remove('is-playing')
         }
 
         if (!playerB.controls.paused) {
           playerB.controls.pause()
-          playerB.controls.currentTime = 0
+          playerB.video.classList.add('is-paused')
+          playerB.video.classList.remove('is-playing')
         }
-
-        playerA.video.classList.remove('is-paused')
-        playerB.video.classList.remove('is-paused')
-
-        playerA.video.classList.remove('is-playing')
-        playerB.video.classList.remove('is-playing')
       }
 
       // Phase `in` - Slide to the second video.

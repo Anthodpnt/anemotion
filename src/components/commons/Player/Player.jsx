@@ -57,8 +57,18 @@ const Player = forwardRef(({ src, cover, caption, playing, onClick, useMotion = 
     el.addEventListener('pause', handleVideoPause)
     el.addEventListener('ended', handleVideoReset)
 
+    // Manage the document visibility to pause the video.
+    const onVisibilityChange = () => {
+      if (document.hidden && video.current.classList.contains('is-playing')) {
+        controls.current.pause()
+      }
+    }
+
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
     return () => {
       window.removeEventListener(id, handleVideoReset)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
 
       el.removeEventListener('play', handleVideoPlay)
       el.removeEventListener('pause', handleVideoPause)
