@@ -68,11 +68,12 @@ const Player = forwardRef(({ src, cover, caption, playing, onClick, useMotion = 
 
     return () => {
       window.removeEventListener(id, handleVideoReset)
-      document.removeEventListener('visibilitychange', onVisibilityChange)
 
       el.removeEventListener('play', handleVideoPlay)
       el.removeEventListener('pause', handleVideoPause)
       el.removeEventListener('ended', handleVideoReset)
+
+      document.removeEventListener('visibilitychange', onVisibilityChange)
     }
   }, [id])
 

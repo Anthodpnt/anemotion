@@ -79,12 +79,15 @@ export const useReadingMotion = (scope, targets) => {
   // Since the content is text, track the font loading.
   // Effect is ready when fonts are loaded.
   useEffect(() => {
+    const _howls = howls.current
+
+    // Load the fonts and wait for them to be ready.
+    // This is important for the SplitText to work as expected.
     document.fonts.ready.then(() => {
       setIsReady(true)
     })
 
     // Initialize the Howl instances for each target with a voice.
-    // Create the voice.
     targets.current.forEach((target, i) => {
       if (target.voice) {
         howls.current[i] = new Howl({
@@ -119,6 +122,17 @@ export const useReadingMotion = (scope, targets) => {
     document.addEventListener('visibilitychange', onVisibilityChange)
 
     return () => {
+      // Unload all the sounds.
+      _howls.forEach((howl) => {
+        if (howl) {
+          howl.unload()
+        }
+      })
+
+      // Clean up the state.
+      setIsReady(false)
+
+      // Clean up the event listener.
       document.removeEventListener('visibilitychange', onVisibilityChange)
     }
   }, [targets])
