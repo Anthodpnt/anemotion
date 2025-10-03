@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.18.0",
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "clsx": "^2.1.1",

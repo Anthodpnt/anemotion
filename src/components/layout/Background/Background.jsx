@@ -5,15 +5,15 @@ import { useBackgroundMotion } from '@motion/useBackgroundMotion'
 import s from './Background.module.scss'
 
 const Background = forwardRef((_, ref) => {
-  const root = useRef()
+  const target = useRef()
 
   // Motion - Background Stretch on scroll.
-  useBackgroundMotion(root)
+  useBackgroundMotion(target)
 
   // Forward the ref to the parent component.
-  useImperativeHandle(ref, () => root.current)
+  useImperativeHandle(ref, () => target.current)
 
-  return <div ref={root} className={s.background} />
+  return <div ref={target} className={s.background} />
 })
 
 export default Background

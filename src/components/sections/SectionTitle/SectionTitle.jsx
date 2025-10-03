@@ -1,59 +1,22 @@
-import { useEffect, useId, useRef } from 'react'
+import { useRef } from 'react'
 import cn from 'clsx'
 
 import Section from '@layout/Section'
 import Slide from '@layout/Slide'
+import Video from '@components/Video'
 import { useStretchMotion } from '@motion/useStretchMotion'
 
 import s from './SectionTitle.module.scss'
 
-const Media = ({ src }) => {
-  const id = useId()
-  const video = useRef()
-
-  // Control playback on scroll
-  useEffect(() => {
-    const handleVideoPlayback = (e) => {
-      switch (e.detail.way) {
-        case 'enter': {
-          video.current.play()
-          break
-        }
-
-        case 'leave': {
-          video.current.pause()
-          video.current.currentTime = 0
-          break
-        }
-      }
-    }
-
-    window.addEventListener(id, handleVideoPlayback)
-
-    return () => {
-      window.removeEventListener(id, handleVideoPlayback)
-    }
-  }, [id])
-
-  return (
-    <video ref={video} loop muted playsInline data-scroll data-scroll-call={id}>
-      {src.map((_src, index) => (
-        <source key={`video-source__${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
-      ))}
-      Your browser does not support the video tag.
-    </video>
-  )
-}
-
 const SectionTitle = ({ images, videos, layout = 'square', title, subtitle }) => {
-  const root = useRef()
+  const scope = useRef()
   const header = useRef()
 
   // Motion - Stretch of the header
-  useStretchMotion(root, header)
+  useStretchMotion(scope, header)
 
   return (
-    <Section ref={root} className={cn(s.section, s[layout])}>
+    <Section ref={scope} className={cn(s.section, s[layout])}>
       <Slide className={s.container}>
         <header ref={header} className={s.header}>
           <h2 className={s.title} dangerouslySetInnerHTML={{ __html: title }} />
@@ -70,7 +33,7 @@ const SectionTitle = ({ images, videos, layout = 'square', title, subtitle }) =>
                 data-scroll-repeat
                 data-scroll-position="middle,middle"
               >
-                <Media src={video} />
+                <Video src={video} loop muted autoPlay />
               </div>
             ))}
           </div>

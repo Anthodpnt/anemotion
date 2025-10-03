@@ -1,54 +1,15 @@
-import { useEffect, useId, useMemo, useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import { gsap, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
 import Section from '@layout/Section'
+import Video from '@components/Video'
 
 import s from './SectionBalance.module.scss'
 
-const Media = ({ src }) => {
-  const id = useId()
-  const video = useRef()
-
-  // Control playback on scroll
-  useEffect(() => {
-    const handleVideoPlayback = (e) => {
-      switch (e.detail.way) {
-        case 'enter': {
-          video.current.play()
-          break
-        }
-
-        case 'leave': {
-          video.current.pause()
-          video.current.currentTime = 0
-          break
-        }
-      }
-    }
-
-    window.addEventListener(id, handleVideoPlayback)
-
-    return () => {
-      window.removeEventListener(id, handleVideoPlayback)
-    }
-  }, [id])
-
-  return (
-    <div data-scroll data-scroll-call={id} data-scroll-repeat>
-      <video ref={video} loop muted playsInline>
-        {src.map((_src, index) => (
-          <source key={`video-source__${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
-        ))}
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  )
-}
-
 const SectionBalance = ({ contents }) => {
-  const root = useRef()
+  const scope = useRef()
   const slides = useRef([])
 
   // Gather all videos of all contents.
@@ -92,24 +53,24 @@ const SectionBalance = ({ contents }) => {
 
       // Phase `scroll` - Scroll through the images.
       ScrollTrigger.create({
-        trigger: root.current,
+        trigger: scope.current,
         start: 'top top',
         end: 'bottom bottom',
         scrub: true,
         onUpdate: motion,
       })
     },
-    { scope: root, dependencies: [width] }
+    { scope, dependencies: [width] }
   )
 
   return (
-    <Section ref={root}>
+    <Section ref={scope}>
       <div className={s.grid}>
         <div className={s.leftSide}>
           <div className={s.slider}>
             {videos.map((video, index) => (
               <div ref={(el) => (slides.current[index] = el)} key={`video-${index}`} className={s.video}>
-                <Media src={video} />
+                <Video src={video} loop muted autoPlay alwaysPlay />
               </div>
             ))}
           </div>

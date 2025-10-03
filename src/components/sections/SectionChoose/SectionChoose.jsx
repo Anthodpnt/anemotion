@@ -12,7 +12,7 @@ import Slide from '@layout/Slide'
 import s from './SectionChoose.module.scss'
 
 const SectionChoose = ({ left, right }) => {
-  const root = useRef()
+  const scope = useRef()
 
   // Motion - Content reveal.
   const { width } = useWindowSize()
@@ -57,11 +57,11 @@ const SectionChoose = ({ left, right }) => {
         }
       )
     },
-    { scope: root, dependencies: [width] }
+    { scope, dependencies: [width] }
   )
 
   return (
-    <Section ref={root}>
+    <Section ref={scope}>
       <Slide className={s.grid}>
         <div className={s.content}>
           <div className={cn('box', s.box)} data-scroll data-scroll-repeat data-scroll-position="middle,middle">

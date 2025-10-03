@@ -19,7 +19,7 @@ export default {
     coverA: '/images/movies-series/pride-and-prejudice-original.webp',
     coverB: '/images/movies-series/pride-and-prejudice-horror.webp',
     captionA: '"Pride & Prejudice" by Joe Wright, 2005',
-    captionB: '"How Music Changes Everything" by Film Riot on Youtube',
+    captionB: '"Pride & Prejudice" by Joe Wright, 2005',
   },
   sound: {
     title: 'The Sounds',
@@ -32,7 +32,7 @@ export default {
     altB: 'Picture of Ross Geller from the series "Friends" pointing two fingers at his head',
     coverA: '/images/movies-series/titanic.webp',
     coverB: '/images/movies-series/friends-ross.webp',
-    captionA: '"Inappropriate Laugh Track: Titanic Sinking" by Jerome Pulle on Youtube',
-    captionB: '"Friends: Ross Geller Without Laugh Track = Psychopath" by TVBee on Youtube',
+    captionA: '"Titanic" by James Cameron, 1997',
+    captionB: '"Friends" by TVBee on Youtube',
   },
 }

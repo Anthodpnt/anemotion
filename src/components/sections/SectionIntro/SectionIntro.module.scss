@@ -165,23 +165,6 @@
   position: relative;
   grid-row: 1;
 
-  figure {
-    width: 100%;
-
-    > div::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      opacity: 0.3;
-      background-color: rgba($color-dark-4, 0.8);
-      background-image: url('/images/noise-white.png');
-      background-repeat: repeat;
-      background-size: 150px auto;
-      background-position: 50% 50%;
-    }
-  }
-
   .logo {
     position: absolute;
     top: 50%;
@@ -195,19 +178,11 @@
   &:nth-child(odd) {
     @include grid-column-span(3);
     @include grid-column-start(3);
-
-    [class*='caption_'] {
-      text-align: left;
-    }
   }
 
   &:nth-child(even) {
     @include grid-column-span(3);
     @include grid-column-start(8);
-
-    [class*='caption_'] {
-      text-align: right;
-    }
   }
 
   &:nth-child(1) {

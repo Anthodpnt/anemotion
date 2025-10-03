@@ -1,3 +1,4 @@
+import Mask from '@layout/Mask'
 import Section from '@layout/Section'
 import Slide from '@layout/Slide'
 import Image from '@components/Image'
@@ -11,12 +12,12 @@ const SectionCompare = ({ title, left, right }) => {
         {title && <h2 className={s.title} dangerouslySetInnerHTML={{ __html: title }} />}
 
         <div className={s.compare}>
-          <div className={s.leftSide}>
+          <Mask className={s.leftSide}>
             <Image {...left} />
-          </div>
-          <div className={s.rightSide}>
+          </Mask>
+          <Mask className={s.rightSide}>
             <Image {...right} />
-          </div>
+          </Mask>
         </div>
       </Slide>
     </Section>

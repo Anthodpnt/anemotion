@@ -17,12 +17,15 @@
 // Content
 
 .text {
-  @include font-text-14;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
 
   + .text {
     color: $color-dark-1;
     margin-left: 1rem;
     padding-left: 1rem;
-    border-left: 1px solid rgba($color-dark-1, 0.4);
+    border-left: 1px solid currentColor;
   }
 }

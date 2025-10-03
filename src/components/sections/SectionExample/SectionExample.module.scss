@@ -253,8 +253,12 @@
   .text {
     color: rgba($color-purple-1, 0.6);
     font-size: 1.6rem;
-    line-height: 1.4;
+    line-height: 1.5;
     padding-right: 3rem;
+
+    b {
+      color: $color-purple-3;
+    }
   }
 }
 

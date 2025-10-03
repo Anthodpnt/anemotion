@@ -45,8 +45,7 @@
   transform: scale(0);
   transition: all 0s 0.4s;
 
-  img,
-  video {
+  img {
     display: block;
     width: 100%;
     height: 100%;
@@ -82,25 +81,35 @@
 
 .square {
   .media {
+    max-width: 18rem;
     aspect-ratio: 1 / 1;
+    @include grid-column-span(2);
+
+    @media only screen and (min-width: 1860px) {
+      max-width: 23rem;
+    }
 
     &:nth-child(1) {
-      @include grid-column-span(2);
       @include grid-column-start(4);
     }
 
     &:nth-child(2) {
-      @include grid-column-span(2);
       @include grid-column-start(1);
+
+      @media only screen and (min-width: 1860px) {
+        @include grid-column-start(2);
+      }
     }
 
     &:nth-child(3) {
-      @include grid-column-span(2);
       @include grid-column-start(11);
+
+      @media only screen and (min-width: 1860px) {
+        @include grid-column-start(10);
+      }
     }
 
     &:nth-child(4) {
-      @include grid-column-span(2);
       @include grid-column-start(8);
     }
   }

@@ -1,3 +1,4 @@
+import Mask from '@layout/Mask'
 import Section from '@layout/Section'
 import Slide from '@layout/Slide'
 import Player from '@components/Player'
@@ -10,7 +11,10 @@ const SectionVideo = ({ src, alt, cover, title, caption }) => {
       <Slide className={s.grid}>
         <div className={s.content}>
           {title && <h2 className={s.title}>{title}</h2>}
-          <Player src={src} alt={alt} cover={cover} caption={caption} />
+
+          <Mask>
+            <Player src={src} alt={alt} cover={cover} caption={caption} />
+          </Mask>
         </div>
       </Slide>
     </Section>

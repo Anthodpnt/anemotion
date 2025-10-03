@@ -1,8 +1,9 @@
 import { useRef } from 'react'
-import gsap, { ScrollTrigger } from 'gsap/all'
+import { gsap, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
+import Mask from '@layout/Mask'
 import Section from '@layout/Section'
 import Image from '@components/Image'
 
@@ -18,7 +19,7 @@ config.yearOnRoller = config.yearMax - config.yearMin + 1
 config.yearOnTimeline = config.yearMax - config.yearMin
 
 const SectionIntro = () => {
-  const root = useRef()
+  const scope = useRef()
   const years = useRef([])
   const roller = useRef()
   const digits = useRef()
@@ -84,7 +85,7 @@ const SectionIntro = () => {
 
       // Scroll motion to move digits based on the scroll progress.
       ScrollTrigger.create({
-        trigger: root.current,
+        trigger: scope.current,
         start: 'top top',
         end: 'bottom bottom',
         scrub: true,
@@ -92,11 +93,11 @@ const SectionIntro = () => {
         onRefresh: createMotion,
       })
     },
-    { scope: root, dependencies: [width] }
+    { scope, dependencies: [width] }
   )
 
   return (
-    <Section ref={root} className={s.section}>
+    <Section ref={scope} className={s.section}>
       <div className={s.timeline}>
         {Array.from({ length: config.yearOnTimeline }).map((_, i) => (
           <div ref={(el) => (years.current[i] = el)} key={`year-${config.yearMin + i}`} className={s.date}>
@@ -123,7 +124,7 @@ const SectionIntro = () => {
       </div>
 
       <div className={s.images} data-scroll data-scroll-speed="0.1">
-        <div className={s.image}>
+        <Mask className={s.image}>
           <Image
             src="/images/intro/tomorrowland.webp"
             alt="Blurry image with shades of green"
@@ -137,9 +138,9 @@ const SectionIntro = () => {
             height={600}
             className={s.logo}
           />
-        </div>
+        </Mask>
 
-        <div className={s.image}>
+        <Mask className={s.image}>
           <Image
             src="/images/intro/hape.webp"
             alt="Blurry image with shades of red and black"
@@ -153,9 +154,9 @@ const SectionIntro = () => {
             height={600}
             className={s.logo}
           />
-        </div>
+        </Mask>
 
-        <div className={s.image}>
+        <Mask className={s.image}>
           <Image
             src="/images/intro/virgin-galactic.webp"
             alt="Blurry image with shades of white and purple"
@@ -169,9 +170,9 @@ const SectionIntro = () => {
             height={600}
             className={s.logo}
           />
-        </div>
+        </Mask>
 
-        <div className={s.image}>
+        <Mask className={s.image}>
           <Image
             src="/images/intro/adobe.webp"
             alt="Blurry image with shades of pink and beige"
@@ -185,9 +186,9 @@ const SectionIntro = () => {
             height={600}
             className={s.logo}
           />
-        </div>
+        </Mask>
 
-        <div className={s.image}>
+        <Mask className={s.image}>
           <Image
             src="/images/intro/hugo-boss.webp"
             alt="Blurry image with shades of brown and beige"
@@ -201,9 +202,9 @@ const SectionIntro = () => {
             height={600}
             className={s.logo}
           />
-        </div>
+        </Mask>
 
-        <div className={s.image}>
+        <Mask className={s.image}>
           <Image
             src="/images/intro/virtual-expo.webp"
             alt="Blurry image with shades of beige, pink and green"
@@ -217,7 +218,7 @@ const SectionIntro = () => {
             height={600}
             className={s.logo}
           />
-        </div>
+        </Mask>
       </div>
     </Section>
   )

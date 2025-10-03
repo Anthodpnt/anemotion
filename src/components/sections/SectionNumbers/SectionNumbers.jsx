@@ -66,8 +66,8 @@ const SectionNumbers = ({ title, values }) => {
           <div
             className={s.list}
             data-scroll
-            data-scroll-call={id}
             data-scroll-repeat
+            data-scroll-call={id}
             data-scroll-position="middle,middle"
           >
             {values.map((item, i) => (

@@ -53,7 +53,7 @@ const Model = forwardRef(({ name, level, description, children }, ref) => {
         </header>
 
         <div className={s.content}>
-          <p className={s.text}>{description}</p>
+          <p className={s.text} dangerouslySetInnerHTML={{ __html: description }} />
         </div>
 
         <svg viewBox="0 0 370 570" className={s.border}>
@@ -92,7 +92,7 @@ const Model = forwardRef(({ name, level, description, children }, ref) => {
 })
 
 const SectionExample = ({ models }) => {
-  const root = useRef()
+  const scope = useRef()
   const items = useRef([])
 
   // Motion - Arc slider.
@@ -129,7 +129,7 @@ const SectionExample = ({ models }) => {
         value: length,
         ease: 'none',
         scrollTrigger: {
-          trigger: root.current,
+          trigger: scope.current,
           start: 'top top',
           end: 'bottom bottom',
           snap: {
@@ -142,7 +142,7 @@ const SectionExample = ({ models }) => {
         onUpdate: () => motion(progress.value),
       })
     },
-    { scope: root }
+    { scope }
   )
 
   // Motion - Particle effect on interaction.
@@ -235,7 +235,7 @@ const SectionExample = ({ models }) => {
   }, [])
 
   return (
-    <Section ref={root} className={s.section}>
+    <Section ref={scope} className={s.section}>
       <Slide className={s.container}>
         <div className={s.slider}>
           <div className={s.roller}>

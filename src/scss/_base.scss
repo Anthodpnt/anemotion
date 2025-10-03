@@ -28,8 +28,8 @@ html {
   font-size: 10px;
   font-family: $font-inter;
 
-  @media only screen and (min-width: 1800px) {
-    font-size: calc(10 * (100vw / 1800));
+  @media only screen and (min-width: 1500px) {
+    font-size: calc(10 * (100vw / 1500));
   }
 }
 

@@ -7,7 +7,7 @@ import { Howl } from 'howler'
 // This motion makes some text appear words by words on scroll.
 // The result is a reading effect.
 // Note: It supports multiple targets as an array of refs.
-export const useReadingMotion = (scope, targets) => {
+export const useReadingMotion = (scope, targets, onComplete) => {
   const { width } = useWindowSize()
 
   // Track the loading of the fonts.
@@ -28,6 +28,7 @@ export const useReadingMotion = (scope, targets) => {
 
         // Initial state of the motion.
         gsap.set(split.words, {
+          color: '#6d6e88',
           opacity: 0,
         })
 
@@ -56,7 +57,7 @@ export const useReadingMotion = (scope, targets) => {
         })
 
         tl.to(split.words, {
-          opacity: 0.2,
+          opacity: 0.4,
           stagger: 0.05,
           ease: 'power1.out',
           duration: 0.2,
@@ -64,8 +65,11 @@ export const useReadingMotion = (scope, targets) => {
             if (howl && howl.needsPlay) {
               howl.play()
             }
+
+            onComplete?.(i)
           },
         }).to(split.words, {
+          color: '#fff',
           opacity: 1,
           stagger: (target.duration ?? 3) / split.words.length,
           ease: 'power1.out',

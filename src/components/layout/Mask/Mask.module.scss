@@ -1,0 +1,16 @@
+@use '@/scss/forwards' as *;
+
+.mask {
+  width: 100%;
+}
+
+.target,
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.target {
+  overflow: hidden;
+  border-radius: 1rem;
+}

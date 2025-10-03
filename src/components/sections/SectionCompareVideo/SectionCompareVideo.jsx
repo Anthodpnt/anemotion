@@ -13,14 +13,14 @@ import s from './SectionCompareVideo.module.scss'
 
 const SectionCompareVideo = ({ srcA, srcB, altA, altB, coverA, coverB, captionA, captionB, title }) => {
   const id = useId()
-  const root = useRef()
-  const video = useRef()
+  const scope = useRef()
   const slider = useRef()
+  const target = useRef()
   const content = useRef()
   const players = useRef([])
 
   // Motion - Mask reveal.
-  useMaskMotion(root, video, content)
+  useMaskMotion(scope, target, content)
 
   // Motion - Slider effect.
   const { width } = useWindowSize()
@@ -53,14 +53,14 @@ const SectionCompareVideo = ({ srcA, srcB, altA, altB, coverA, coverB, captionA,
 
       // Phase `in` - Slide to the second video.
       ScrollTrigger.create({
-        trigger: root.current,
+        trigger: scope.current,
         start: 'top top',
         end: 'bottom bottom',
         scrub: true,
         onUpdate: motion,
       })
     },
-    { scope: root, dependencies: [width] }
+    { scope, dependencies: [width] }
   )
 
   // Pause all videos when one is played.
@@ -77,12 +77,12 @@ const SectionCompareVideo = ({ srcA, srcB, altA, altB, coverA, coverB, captionA,
   }, [])
 
   return (
-    <Section ref={root} className={s.section}>
+    <Section ref={scope} className={s.section}>
       <Slide className={cn(s.grid, s.sticky)}>
         <div className={s.inner}>
           {title && <h2 className={s.title}>{title}</h2>}
 
-          <div ref={video} className={s.players}>
+          <div ref={target} className={s.players}>
             <div ref={content} className={s.content}>
               <div ref={slider} className={s.player}>
                 <Player

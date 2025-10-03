@@ -1,61 +1,14 @@
-import { forwardRef, useId, useRef } from 'react'
+import { forwardRef, useRef } from 'react'
 import { gsap, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
+import Mask from '@layout/Mask'
 import Container from '@layout/Container'
 import Background from '@layout/Background'
-import { useMaskMotion } from '@motion/useMaskMotion'
+import Video from '@components/Video'
 
 import s from './SectionShowcase.module.scss'
-import { useEffect } from 'react'
-
-const Media = ({ src }) => {
-  const id = useId()
-  const root = useRef()
-  const mask = useRef()
-  const video = useRef()
-
-  // Motion - Mask reveal.
-  useMaskMotion(root, mask, video)
-
-  // Control playback on scroll
-  useEffect(() => {
-    const handleVideoPlayback = (e) => {
-      switch (e.detail.way) {
-        case 'enter': {
-          video.current.play()
-          break
-        }
-
-        case 'leave': {
-          video.current.pause()
-          video.current.currentTime = 0
-          break
-        }
-      }
-    }
-
-    window.addEventListener(id, handleVideoPlayback)
-
-    return () => {
-      window.removeEventListener(id, handleVideoPlayback)
-    }
-  }, [id])
-
-  return (
-    <div ref={root} className={s.media} data-scroll data-scroll-call={id} data-scroll-repeat>
-      <div ref={mask} className={s.mask}>
-        <video ref={video} loop muted playsInline>
-          {src.map((_src, index) => (
-            <source key={`video-source__${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
-          ))}
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  )
-}
 
 const Project = forwardRef(({ videos }, ref) => {
   return (
@@ -63,7 +16,9 @@ const Project = forwardRef(({ videos }, ref) => {
       <Container className={s.container}>
         <div className={s.content} data-scroll data-scroll-speed="0.1">
           {videos.map((video, index) => (
-            <Media key={`video-${index}`} src={video} />
+            <Mask key={`video-${index}`} className={s.mask}>
+              <Video src={video} loop muted autoPlay />
+            </Mask>
           ))}
         </div>
       </Container>
@@ -72,7 +27,7 @@ const Project = forwardRef(({ videos }, ref) => {
 })
 
 const SectionShowcase = ({ projects }) => {
-  const root = useRef()
+  const scope = useRef()
   const title = useRef()
   const sections = useRef([])
   const subtitle = useRef()
@@ -107,7 +62,7 @@ const SectionShowcase = ({ projects }) => {
       let lastIndex = 0
 
       ScrollTrigger.create({
-        trigger: root.current,
+        trigger: scope.current,
         start: 'top center',
         end: 'bottom center',
         scrub: true,
@@ -151,11 +106,11 @@ const SectionShowcase = ({ projects }) => {
         },
       })
     },
-    { scope: root, dependencies: [width] }
+    { scope, dependencies: [width] }
   )
 
   return (
-    <section ref={root} className={s.section}>
+    <section ref={scope} className={s.section}>
       <Container>
         <header className={s.header}>
           <Container className={s.inner}>
