@@ -22,7 +22,7 @@ export default {
     ],
   },
   video: {
-    src: ['/videos/organic-cursor.mp4'],
+    src: [`${import.meta.env.VITE_CDN_URL}/videos/organic-cursor.mp4`],
     title: 'The Organic Cursor',
   },
 }

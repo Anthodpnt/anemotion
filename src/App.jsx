@@ -24,6 +24,8 @@ import SectionTitle from '@sections/SectionTitle'
 import SectionVideo from '@sections/SectionVideo'
 import SectionChoose from '@sections/SectionChoose/SectionChoose'
 
+console.log(import.meta.env.VITE_CDN_URL)
+
 import s from './App.module.scss'
 
 // Remove scroll restoration on page load.

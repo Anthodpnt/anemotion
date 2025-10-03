@@ -5,15 +5,15 @@ export default {
   },
   acting: {
     title: 'The Acting',
-    src: ['/videos/modern-times.mp4'],
+    src: [`${import.meta.env.VITE_CDN_URL}/videos/modern-times.mp4`],
     alt: 'Picture of Charlie Chaplin as The Tramp from the movie "Modern Times"',
     cover: '/images/movies-series/modern-times.webp',
     caption: '"Modern Times" by Charlie Chaplin, 1936',
   },
   music: {
     title: 'The Music',
-    srcA: ['/videos/pride-and-prejudice-1.mp4'],
-    srcB: ['/videos/pride-and-prejudice-2.mp4'],
+    srcA: [`${import.meta.env.VITE_CDN_URL}/videos/pride-and-prejudice-1.mp4`],
+    srcB: [`${import.meta.env.VITE_CDN_URL}/videos/pride-and-prejudice-2.mp4`],
     altA: 'Picture of a man and a woman face to face from the movie "Pride & Prejudice"',
     altB: 'Picture of a man walking in a field from the movie "Pride & Prejudice"',
     coverA: '/images/movies-series/pride-and-prejudice-original.webp',
@@ -23,8 +23,11 @@ export default {
   },
   sound: {
     title: 'The Sounds',
-    srcA: ['/videos/titanic-laugh-track.webm', '/videos/titanic-laugh-track.mp4'],
-    srcB: ['/videos/ross-the-psychopath.mp4'],
+    srcA: [
+      `${import.meta.env.VITE_CDN_URL}/videos/titanic-laugh-track.webm`,
+      `${import.meta.env.VITE_CDN_URL}/videos/titanic-laugh-track.mp4`,
+    ],
+    srcB: [`${import.meta.env.VITE_CDN_URL}/videos/ross-the-psychopath.mp4`],
     altA: 'Picture of the Titanic sinking from the movie "Titanic"',
     altB: 'Picture of Ross Geller from the series "Friends" pointing two fingers at his head',
     coverA: '/images/movies-series/titanic.webp',

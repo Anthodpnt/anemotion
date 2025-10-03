@@ -8,10 +8,10 @@ export default {
       suptitle: '4 Awards',
       subtitle: 'Immersive Adobe Substance 3D Gallery',
       videos: [
-        ['/videos/adobe-1.webm', '/videos/adobe-1.mp4'],
-        ['/videos/adobe-2.webm', '/videos/adobe-2.mp4'],
-        ['/videos/adobe-3.webm', '/videos/adobe-3.mp4'],
-        ['/videos/adobe-4.webm', '/videos/adobe-4.mp4'],
+        [`${import.meta.env.VITE_CDN_URL}/videos/adobe-1.webm`, `${import.meta.env.VITE_CDN_URL}/videos/adobe-1.mp4`],
+        [`${import.meta.env.VITE_CDN_URL}/videos/adobe-2.webm`, `${import.meta.env.VITE_CDN_URL}/videos/adobe-2.mp4`],
+        [`${import.meta.env.VITE_CDN_URL}/videos/adobe-3.webm`, `${import.meta.env.VITE_CDN_URL}/videos/adobe-3.mp4`],
+        [`${import.meta.env.VITE_CDN_URL}/videos/adobe-4.webm`, `${import.meta.env.VITE_CDN_URL}/videos/adobe-4.mp4`],
       ],
     },
     {
@@ -22,10 +22,22 @@ export default {
       suptitle: '2 Awards',
       subtitle: 'The World Expo Brought to the Web',
       videos: [
-        ['/videos/virtual-expo-1.webm', '/videos/virtual-expo-1.mp4'],
-        ['/videos/virtual-expo-2.webm', '/videos/virtual-expo-2.mp4'],
-        ['/videos/virtual-expo-3.webm', '/videos/virtual-expo-3.mp4'],
-        ['/videos/virtual-expo-4.webm', '/videos/virtual-expo-4.mp4'],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-1.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-1.mp4`,
+        ],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-2.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-2.mp4`,
+        ],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-3.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-3.mp4`,
+        ],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-4.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-4.mp4`,
+        ],
       ],
     },
     {
@@ -35,10 +47,10 @@ export default {
       accent: '#261112',
       subtitle: 'Beauty & Technology in Harmony',
       videos: [
-        ['/videos/geske-1.webm', '/videos/geske-1.mp4'],
-        ['/videos/geske-2.webm', '/videos/geske-2.mp4'],
-        ['/videos/geske-3.webm', '/videos/geske-3.mp4'],
-        ['/videos/geske-4.webm', '/videos/geske-4.mp4'],
+        [`${import.meta.env.VITE_CDN_URL}/videos/geske-1.webm`, `${import.meta.env.VITE_CDN_URL}/videos/geske-1.mp4`],
+        [`${import.meta.env.VITE_CDN_URL}/videos/geske-2.webm`, `${import.meta.env.VITE_CDN_URL}/videos/geske-2.mp4`],
+        [`${import.meta.env.VITE_CDN_URL}/videos/geske-3.webm`, `${import.meta.env.VITE_CDN_URL}/videos/geske-3.mp4`],
+        [`${import.meta.env.VITE_CDN_URL}/videos/geske-4.webm`, `${import.meta.env.VITE_CDN_URL}/videos/geske-4.mp4`],
       ],
     },
     {
@@ -49,10 +61,22 @@ export default {
       suptitle: '4 Awards',
       subtitle: 'Immersive NFT Showcase Experience',
       videos: [
-        ['/videos/hape-prime-1.webm', '/videos/hape-prime-1.mp4'],
-        ['/videos/hape-prime-2.webm', '/videos/hape-prime-2.mp4'],
-        ['/videos/hape-prime-3.webm', '/videos/hape-prime-3.mp4'],
-        ['/videos/hape-prime-4.webm', '/videos/hape-prime-4.mp4'],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-1.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-1.mp4`,
+        ],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-2.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-2.mp4`,
+        ],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-3.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-3.mp4`,
+        ],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-4.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/hape-prime-4.mp4`,
+        ],
       ],
     },
   ],
