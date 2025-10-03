@@ -8,7 +8,7 @@
   transform-origin: 50% 0%;
 }
 
-.videos {
+.medias {
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -38,13 +38,14 @@
   margin-top: 1.2rem;
 }
 
-.video {
+.media {
   overflow: hidden;
   grid-row: 1 / span 1;
   border-radius: 50%;
   transform: scale(0);
   transition: all 0s 0.4s;
 
+  img,
   video {
     display: block;
     width: 100%;
@@ -52,8 +53,17 @@
     object-fit: cover;
   }
 
+  &:nth-child(1) {
+    margin-top: 5dvh;
+  }
+
   &:nth-child(2) {
     margin-top: auto;
+    margin-bottom: 15dvh;
+  }
+
+  &:nth-child(3) {
+    margin-top: 15dvh;
   }
 
   &:nth-child(4) {
@@ -71,23 +81,20 @@
 // Variants
 
 .square {
-  .video {
+  .media {
     aspect-ratio: 1 / 1;
 
     &:nth-child(1) {
-      margin-top: 10dvh;
       @include grid-column-span(2);
       @include grid-column-start(4);
     }
 
     &:nth-child(2) {
-      margin-bottom: 20dvh;
       @include grid-column-span(2);
       @include grid-column-start(1);
     }
 
     &:nth-child(3) {
-      margin-top: 20dvh;
       @include grid-column-span(2);
       @include grid-column-start(11);
     }
@@ -100,23 +107,20 @@
 }
 
 .horizontal {
-  .video {
+  .media {
     aspect-ratio: 16 / 9;
 
     &:nth-child(1) {
-      margin-top: 5dvh;
       @include grid-column-span(3);
       @include grid-column-start(3);
     }
 
     &:nth-child(2) {
-      margin-bottom: 15dvh;
       @include grid-column-span(3);
       @include grid-column-start(1);
     }
 
     &:nth-child(3) {
-      margin-top: 15dvh;
       @include grid-column-span(3);
       @include grid-column-start(10);
     }

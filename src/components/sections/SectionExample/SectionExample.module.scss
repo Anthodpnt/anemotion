@@ -5,6 +5,10 @@
 
 .section {
   height: 300dvh;
+
+  + * {
+    z-index: 1;
+  }
 }
 
 .container {

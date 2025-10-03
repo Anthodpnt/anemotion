@@ -32,6 +32,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  pointer-events: none;
 
   .inner {
     height: auto;
@@ -113,25 +114,25 @@
 
   &:nth-child(1) {
     z-index: 1;
-    margin-top: 10dvh;
+    margin-top: 7dvh;
     @include grid-column-span(5);
     @include grid-column-start(1);
   }
 
   &:nth-child(2) {
-    margin-top: 55dvh;
+    margin-top: 56dvh;
     @include grid-column-span(5);
     @include grid-column-start(8);
   }
 
   &:nth-child(3) {
-    margin-top: 105dvh;
+    margin-top: 113dvh;
     @include grid-column-span(5);
     @include grid-column-start(1);
   }
 
   &:nth-child(4) {
-    margin-top: 165dvh;
+    margin-top: 163dvh;
     @include grid-column-span(5);
     @include grid-column-start(8);
   }
