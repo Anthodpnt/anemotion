@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useId, useMemo, useRef } from 'react'
 import { gsap, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
@@ -7,18 +7,58 @@ import Section from '@layout/Section'
 
 import s from './SectionBalance.module.scss'
 
+const Media = ({ src }) => {
+  const id = useId()
+  const video = useRef()
+
+  // Control playback on scroll
+  useEffect(() => {
+    const handleVideoPlayback = (e) => {
+      switch (e.detail.way) {
+        case 'enter': {
+          video.current.play()
+          break
+        }
+
+        case 'leave': {
+          video.current.pause()
+          video.current.currentTime = 0
+          break
+        }
+      }
+    }
+
+    window.addEventListener(id, handleVideoPlayback)
+
+    return () => {
+      window.removeEventListener(id, handleVideoPlayback)
+    }
+  }, [id])
+
+  return (
+    <div data-scroll data-scroll-call={id} data-scroll-repeat>
+      <video ref={video} loop muted playsInline>
+        {src.map((_src, index) => (
+          <source key={`video-source__${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
+        ))}
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  )
+}
+
 const SectionBalance = ({ contents }) => {
   const root = useRef()
   const slides = useRef([])
 
-  // Gather all images of all contents.
-  const images = useMemo(() => {
+  // Gather all videos of all contents.
+  const videos = useMemo(() => {
     return contents.reduce((acc, content) => {
-      return acc.concat(content.images)
+      return acc.concat(content.videos)
     }, [])
   }, [contents])
 
-  // Motion - Images transition on scroll.
+  // Motion - Videos transition on scroll.
   const { width } = useWindowSize()
 
   useGSAP(
@@ -67,9 +107,9 @@ const SectionBalance = ({ contents }) => {
       <div className={s.grid}>
         <div className={s.leftSide}>
           <div className={s.slider}>
-            {images.map((image, i) => (
-              <div ref={(el) => (slides.current[i] = el)} key={`image-${i}`} className={s.image}>
-                <img {...image} />
+            {videos.map((video, index) => (
+              <div ref={(el) => (slides.current[index] = el)} key={`video-${index}`} className={s.video}>
+                <Media src={video} />
               </div>
             ))}
           </div>
@@ -77,7 +117,7 @@ const SectionBalance = ({ contents }) => {
 
         <div className={s.rightSide}>
           {contents.map((content, i) => (
-            <div key={`content-${i}`} style={{ '--count': content.images.length }} className={s.content}>
+            <div key={`content-${i}`} style={{ '--count': content.videos.length }} className={s.content}>
               <div className={s.inner}>
                 <h3 className={s.title}>{content.title}</h3>
                 <p className={s.text}>{content.text}</p>

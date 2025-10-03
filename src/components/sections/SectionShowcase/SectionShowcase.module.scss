@@ -40,7 +40,6 @@
 
 .content {
   position: relative;
-  z-index: -1;
   width: 100%;
   height: 200dvh;
   align-items: flex-start;
@@ -92,30 +91,48 @@
   margin-top: 1.2rem;
 }
 
-.image {
+.media {
+  position: relative;
   grid-row: 1 / span 1;
+  aspect-ratio: 16 / 9;
+
+  .mask {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+
+  video {
+    display: block;
+    width: 102%;
+    height: 100%;
+    object-fit: cover;
+    margin-left: -1%;
+  }
 
   &:nth-child(1) {
+    z-index: 1;
     margin-top: 10dvh;
-    @include grid-column-span(4);
+    @include grid-column-span(5);
     @include grid-column-start(1);
   }
 
   &:nth-child(2) {
     margin-top: 55dvh;
-    @include grid-column-span(4);
-    @include grid-column-start(9);
+    @include grid-column-span(5);
+    @include grid-column-start(8);
   }
 
   &:nth-child(3) {
     margin-top: 105dvh;
-    @include grid-column-span(4);
-    @include grid-column-start(2);
+    @include grid-column-span(5);
+    @include grid-column-start(1);
   }
 
   &:nth-child(4) {
     margin-top: 165dvh;
-    @include grid-column-span(4);
+    @include grid-column-span(5);
     @include grid-column-start(8);
   }
 }

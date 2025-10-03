@@ -1,26 +1,10 @@
 export default {
   title: 'Simple Animations',
   subtitle: 'Improve the User Experience',
-  images: [
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
+  videos: [
+    ['/videos/simple-animation-1.mp4'],
+    ['/videos/simple-animation-2.mp4'],
+    ['/videos/simple-animation-3.mp4'],
+    ['/videos/simple-animation-4.mp4'],
   ],
 }

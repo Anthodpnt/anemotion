@@ -22,8 +22,7 @@ export default {
     ],
   },
   video: {
-    src: ['//storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'],
-    cover: '//picsum.photos/1280/720.webp',
+    src: ['/videos/organic-cursor.mp4'],
     title: 'The Organic Cursor',
   },
 }

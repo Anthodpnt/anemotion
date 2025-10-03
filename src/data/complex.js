@@ -1,26 +1,11 @@
 export default {
   title: 'Complex Animations',
   subtitle: 'Create the Storytelling',
-  images: [
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
-    {
-      src: '//picsum.photos/400/400.webp',
-      width: 400,
-      height: 400,
-    },
+  videos: [
+    ['/videos/complex-animation-1.mp4'],
+    ['/videos/complex-animation-2.webm', '/videos/complex-animation-2.mp4'],
+    ['/videos/complex-animation-3.webm', '/videos/complex-animation-3.mp4'],
+    ['/videos/complex-animation-4.webm', '/videos/complex-animation-4.mp4'],
   ],
+  layout: 'horizontal',
 }

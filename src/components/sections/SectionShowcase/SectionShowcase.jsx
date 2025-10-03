@@ -1,34 +1,70 @@
-import { forwardRef, useRef } from 'react'
+import { forwardRef, useId, useRef } from 'react'
 import { gsap, ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import { useWindowSize } from 'react-use'
 
 import Container from '@layout/Container'
 import Background from '@layout/Background'
-import Image from '@components/Image'
+import { useMaskMotion } from '@motion/useMaskMotion'
 
 import s from './SectionShowcase.module.scss'
+import { useEffect } from 'react'
 
-const Project = forwardRef((_, ref) => {
+const Media = ({ src }) => {
+  const id = useId()
+  const root = useRef()
+  const mask = useRef()
+  const video = useRef()
+
+  // Motion - Mask reveal.
+  useMaskMotion(root, mask, video)
+
+  // Control playback on scroll
+  useEffect(() => {
+    const handleVideoPlayback = (e) => {
+      switch (e.detail.way) {
+        case 'enter': {
+          video.current.play()
+          break
+        }
+
+        case 'leave': {
+          video.current.pause()
+          video.current.currentTime = 0
+          break
+        }
+      }
+    }
+
+    window.addEventListener(id, handleVideoPlayback)
+
+    return () => {
+      window.removeEventListener(id, handleVideoPlayback)
+    }
+  }, [id])
+
+  return (
+    <div ref={root} className={s.media} data-scroll data-scroll-call={id} data-scroll-repeat>
+      <div ref={mask} className={s.mask}>
+        <video ref={video} loop muted playsInline>
+          {src.map((_src, index) => (
+            <source key={`video-source__${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
+          ))}
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  )
+}
+
+const Project = forwardRef(({ videos }, ref) => {
   return (
     <article ref={ref} className={s.project}>
       <Container className={s.container}>
         <div className={s.content} data-scroll data-scroll-speed="0.1">
-          <div className={s.image}>
-            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
-          </div>
-
-          <div className={s.image}>
-            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
-          </div>
-
-          <div className={s.image}>
-            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
-          </div>
-
-          <div className={s.image}>
-            <Image src="//picsum.photos/600/400.webp" width={600} height={400} />
-          </div>
+          {videos.map((video, index) => (
+            <Media key={`video-${index}`} src={video} />
+          ))}
         </div>
       </Container>
     </article>
@@ -144,8 +180,8 @@ const SectionShowcase = ({ projects }) => {
         </header>
 
         <div className={s.projects}>
-          {projects.map((_, i) => (
-            <Project ref={(el) => (sections.current[i] = el)} key={`project-${i}`} />
+          {projects.map((project, i) => (
+            <Project ref={(el) => (sections.current[i] = el)} key={`project-${i}`} videos={project.videos} />
           ))}
         </div>
       </Container>
