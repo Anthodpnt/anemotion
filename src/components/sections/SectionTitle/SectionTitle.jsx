@@ -33,7 +33,7 @@ const SectionTitle = ({ images, videos, layout = 'square', title, subtitle }) =>
                 data-scroll-repeat
                 data-scroll-position="middle,middle"
               >
-                <Video src={video} loop muted autoPlay />
+                <Video src={video} loop muted allowZoom />
               </div>
             ))}
           </div>

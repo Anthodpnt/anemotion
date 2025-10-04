@@ -17,7 +17,7 @@ const Project = forwardRef(({ videos }, ref) => {
         <div className={s.content} data-scroll data-scroll-speed="0.1">
           {videos.map((video, index) => (
             <Mask key={`video-${index}`} className={s.mask}>
-              <Video src={video} loop muted autoPlay />
+              <Video src={video} allowZoom />
             </Mask>
           ))}
         </div>

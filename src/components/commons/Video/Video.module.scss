@@ -1,6 +1,62 @@
-video {
-  display: block;
+@use 'sass:color';
+@use '@/scss/forwards' as *;
+
+.video {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  background-color: color.adjust($color-dark-2, $lightness: -5%);
+
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.button {
+  z-index: 2;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -24px;
+  margin-left: -24px;
+  transition: opacity 0.3s $ease-out-quart;
+  box-shadow: 0 0 24px rgba($color-dark-4, 0.3), 0 2px 4px rgba($color-dark-4, 0.3);
+  background-color: rgba($color-white, 0.2);
+
+  svg {
+    fill: $color-white;
+    filter: none;
+  }
+}
+
+// Variants
+
+.allowZoom {
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s $ease-out-quart;
+    background-color: rgba($color-dark-4, 0.5);
+  }
+
+  &:hover {
+    .button,
+    &::before {
+      opacity: 1;
+    }
+  }
 }

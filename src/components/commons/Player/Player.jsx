@@ -38,11 +38,12 @@ const Player = forwardRef(({ src, alt, cover, caption, playing, onClick, classNa
       }
     }
 
-    const handleVideoReset = (e) => {
-      if (e.detail.way === 'leave') {
-        video.current.classList.remove('is-paused')
-        video.current.classList.remove('is-playing')
-      }
+    const handleVideoReset = () => {
+      controls.current.pause();
+      controls.current.currentTime = 0
+
+      video.current.classList.remove('is-paused')
+      video.current.classList.remove('is-playing')
     }
 
     window.addEventListener(id, handleVideoReset)

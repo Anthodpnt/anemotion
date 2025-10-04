@@ -3,17 +3,32 @@ import { ScrollTrigger } from 'gsap/all'
 import { useGSAP } from '@gsap/react'
 import cn from 'clsx'
 
+import Zoom from '@icons/Zoom'
+import Button from '@components/Button'
+import { useAppContext } from '@/App.context'
+
 import s from './Video.module.scss'
 
-const Video = forwardRef(({ src, autoPlay, alwaysPlay = false, className, ...props }, ref) => {
+const Video = forwardRef(({ src, autoPlay, allowZoom = false, alwaysPlay = false, className, ...props }, ref) => {
   const id = useId()
   const video = useRef()
+
+  // Manage the zoom on the video.
+  const { setShowVideoModal, setShowVideoSource } = useAppContext()
+
+  const handleZoom = () => {
+    if (allowZoom) {
+      setShowVideoModal(true)
+      setShowVideoSource(src)
+    }
+  }
 
   // Control playback on scroll.
   useGSAP(() => {
     const handleEnter = () => {
       if (autoPlay) {
         video.current.play()
+        video.current.currentTime = 0
       }
     }
 
@@ -23,7 +38,7 @@ const Video = forwardRef(({ src, autoPlay, alwaysPlay = false, className, ...pro
       }
 
       video.current.pause()
-      video.current.currentTime = 0
+      // video.current.currentTime = 0
     }
 
     ScrollTrigger.create({
@@ -58,12 +73,20 @@ const Video = forwardRef(({ src, autoPlay, alwaysPlay = false, className, ...pro
   useImperativeHandle(ref, () => video.current)
 
   return (
-    <video {...props} ref={video} className={cn(s.video, className)} playsInline>
-      {src.map((_src, index) => (
-        <source key={`video-${id}__source-${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
-      ))}
-      Your browser does not support the video tag.
-    </video>
+    <div onClick={handleZoom} className={cn(s.video, { [s.allowZoom]: allowZoom }, className)}>
+      {allowZoom && (
+        <Button className={s.button}>
+          <Zoom />
+        </Button>
+      )}
+
+      <video {...props} ref={video} playsInline>
+        {src.map((_src, index) => (
+          <source key={`video-${id}__source-${index}`} src={_src} type={`video/${_src.split('.').pop()}`} />
+        ))}
+        Your browser does not support the video tag.
+      </video>
+    </div>
   )
 })
 

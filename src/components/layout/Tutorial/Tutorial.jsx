@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import Modal from '@layout/Modal'
+
 import s from './Tutorial.module.scss'
 
 const Tutorial = ({ onClose }) => {
@@ -18,7 +20,7 @@ const Tutorial = ({ onClose }) => {
   }, [onClose])
 
   return (
-    <div className={s.modal}>
+    <Modal onClose={onClose}>
       <div className={s.content}>
         <div className={s.inner}>
           <div className={s.leftSide}>
@@ -43,9 +45,7 @@ const Tutorial = ({ onClose }) => {
           Got it!
         </button>
       </div>
-
-      <div onClick={onClose} className={s.background} />
-    </div>
+    </Modal>
   )
 }
 

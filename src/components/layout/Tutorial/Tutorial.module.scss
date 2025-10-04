@@ -2,28 +2,14 @@
 
 // Layout
 
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  place-content: center;
-  flex-direction: column;
-}
-
 .content {
   gap: 3rem;
-  position: relative;
-  z-index: 1;
   width: 100%;
   max-width: 64rem;
-  margin: 0 auto;
   padding: 3rem 4rem 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-radius: 1rem;
-  background-color: $color-dark-2;
 
   .inner {
     gap: 3rem;
@@ -37,13 +23,6 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-}
-
-.background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-color: rgba($color-dark-4, 0.9);
 }
 
 // Content
@@ -64,7 +43,7 @@
   line-height: 1.5;
 
   b {
-    color: $color-white;
+    color: $color-purple-2;
   }
 }
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import cn from 'clsx'
@@ -10,7 +10,6 @@ const Button = ({ children, className, ...props }) => {
   const button = useRef()
 
   // Motion - Light and magnetic animation.
-  const [angle, setAngle] = useState(0)
   const { contextSafe } = useGSAP()
 
   const handleMouseMove = contextSafe((e) => {
@@ -19,12 +18,6 @@ const Button = ({ children, className, ...props }) => {
     if (bounds.top >= window.innerHeight || bounds.bottom <= 0) {
       return
     }
-
-    // Move the light based on the cursor angle.
-    const center = window.innerWidth / 2
-    const progress = (e.clientX - center) / center
-
-    setAngle(progress * 45)
 
     // Magnetic effect.
     const centerX = bounds.left + bounds.width / 2
@@ -65,7 +58,7 @@ const Button = ({ children, className, ...props }) => {
   }, [handleMouseMove])
 
   return (
-    <Tag {...props} ref={button} style={{ '--angle': `${angle}deg` }} className={cn(s.button, className)}>
+    <Tag {...props} ref={button} className={cn(s.button, className)}>
       {children}
     </Tag>
   )

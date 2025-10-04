@@ -57,7 +57,7 @@ const navigate = (locomotive) => {
           return
         }
 
-        current = 0
+        current = -1
         running = true
 
         navigateToHome(locomotive, { onComplete: () => (running = false) })

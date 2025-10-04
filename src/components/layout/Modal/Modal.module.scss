@@ -1,0 +1,39 @@
+@use '@/scss/forwards' as *;
+
+// Layout
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  place-content: center;
+  flex-direction: column;
+}
+
+.close {
+  position: absolute;
+  top: 2rem;
+  right: $page-padding-x;
+  z-index: 10;
+
+  svg {
+    fill: $color-white;
+  }
+}
+
+.content {
+  width: fit-content;
+  margin: auto;
+  z-index: 1;
+  position: relative;
+  border-radius: 1rem;
+  background-color: $color-dark-2;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: rgba($color-dark-4, 0.95);
+}

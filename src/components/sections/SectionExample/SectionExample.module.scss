@@ -33,6 +33,7 @@
       rgba($color-purple-3, 0) 70%,
       rgba($color-purple-3, 0) 100%
     );
+    pointer-events: none;
     backface-visibility: hidden;
   }
 }
@@ -257,7 +258,7 @@
     padding-right: 3rem;
 
     b {
-      color: $color-purple-3;
+      color: $color-purple-2;
     }
   }
 }
