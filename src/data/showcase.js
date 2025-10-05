@@ -27,12 +27,12 @@ export default {
           `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-1.mp4`,
         ],
         [
-          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-2.webm`,
-          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-2.mp4`,
-        ],
-        [
           `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-3.webm`,
           `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-3.mp4`,
+        ],
+        [
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-2.webm`,
+          `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-2.mp4`,
         ],
         [
           `${import.meta.env.VITE_CDN_URL}/videos/virtual-expo-4.webm`,
