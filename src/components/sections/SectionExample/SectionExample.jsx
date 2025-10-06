@@ -14,7 +14,7 @@ import s from './SectionExample.module.scss'
 // Sound effect.
 const sound = new Howl({
   src: ['/sounds/level-up.mp3'],
-  volume: 0.4,
+  volume: 0.7,
 })
 
 // Color for the particles.

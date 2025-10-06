@@ -96,7 +96,7 @@ export const useReadingMotion = (scope, targets, onComplete) => {
       if (target.voice) {
         howls.current[i] = new Howl({
           src: Array.isArray(target.voice) ? target.voice : [target.voice],
-          volume: target.volume || 0.5,
+          volume: target.volume || 0.7,
         })
 
         howls.current[i].on('play', () => {
